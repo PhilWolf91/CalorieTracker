@@ -23,6 +23,8 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 }
                 MenuComponent.prototype.toggleMenu = function () {
                     console.log("THERE");
+                    // var wrapper = document.getElementById('wrapper')
+                    // wrapper.classList.add('toggled');
                     $("#wrapper").toggleClass("toggled");
                 };
                 MenuComponent = __decorate([

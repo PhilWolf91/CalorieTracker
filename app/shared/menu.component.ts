@@ -12,6 +12,8 @@ export class MenuComponent {
     
     toggleMenu(): void{
         console.log("THERE");
+        // var wrapper = document.getElementById('wrapper')
+        // wrapper.classList.add('toggled');
         $("#wrapper").toggleClass("toggled");
     }
 }

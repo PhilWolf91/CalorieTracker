@@ -7,7 +7,7 @@
 /* Toggle Styles */
 
 #wrapper {
-    padding-left: 250;
+    padding-left: 0;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -21,10 +21,10 @@
 #sidebar-wrapper {
     z-index: 1000;
     position: fixed;
-    left: 150px;
-    width: 0;
+    left: 250px;
+    width: 20px;
     height: 100%;
-    margin-left: -150px;
+    margin-left: -250px;
     overflow-y: auto;
     background: #000;
     -webkit-transition: all 0.5s ease;
@@ -110,7 +110,7 @@
     }
 
     #wrapper.toggled #sidebar-wrapper {
-        width: 50;
+        width: 20px;
     }
 
     #page-content-wrapper {

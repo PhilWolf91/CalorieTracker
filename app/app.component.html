@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div id='wrapper'>
     <ctw-menu></ctw-menu>
     <div id="page-content-wrapper">
         <div class="container-fluid">
@@ -11,3 +11,10 @@
         </div>
     </div>
 </div>
+
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
