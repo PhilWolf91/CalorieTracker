@@ -1,5 +1,4 @@
 import { Component } from 'angular2/core'
-import { MenuComponent } from './shared/menu.component'
 import { RouteConfig, ROUTER_PROVIDERS, ROUTER_DIRECTIVES } from 'angular2/router'
 import { HomeComponent } from './home/home.component'
 
@@ -7,7 +6,7 @@ import { HomeComponent } from './home/home.component'
     selector: 'ctw-app',
     templateUrl: './app/app.component.html',
     providers: [ROUTER_PROVIDERS],
-    directives: [ROUTER_DIRECTIVES, MenuComponent, HomeComponent,]
+    directives: [ROUTER_DIRECTIVES, HomeComponent,]
 })
 
 
