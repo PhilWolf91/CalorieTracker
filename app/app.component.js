@@ -10,7 +10,7 @@ System.register(['angular2/core', './shared/menu.component', 'angular2/router', 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, menu_component_1, router_1, router_2, home_component_1;
+    var core_1, menu_component_1, router_1, home_component_1;
     var AppComponent;
     return {
         setters:[
@@ -22,7 +22,6 @@ System.register(['angular2/core', './shared/menu.component', 'angular2/router', 
             },
             function (router_1_1) {
                 router_1 = router_1_1;
-                router_2 = router_1_1;
             },
             function (home_component_1_1) {
                 home_component_1 = home_component_1_1;
@@ -31,15 +30,21 @@ System.register(['angular2/core', './shared/menu.component', 'angular2/router', 
             AppComponent = (function () {
                 function AppComponent() {
                 }
+                AppComponent.prototype.toggleMenu = function () {
+                    console.log("THERE");
+                    // var wrapper = document.getElementById('wrapper')
+                    // wrapper.classList.add('toggled');
+                    $("#wrapper").toggleClass("toggled");
+                };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'ctw-app',
                         templateUrl: './app/app.component.html',
-                        directives: [menu_component_1.MenuComponent],
-                        providers: [router_1.ROUTER_PROVIDERS]
+                        providers: [router_1.ROUTER_PROVIDERS],
+                        directives: [router_1.ROUTER_DIRECTIVES, menu_component_1.MenuComponent, home_component_1.HomeComponent,]
                     }),
-                    router_2.RouteConfig([
-                        { path: '/home', name: 'Home', component: home_component_1.HomeComponent, useAsDefault: true }
+                    router_1.RouteConfig([
+                        { path: './home', name: 'Home', component: home_component_1.HomeComponent, useAsDefault: true }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

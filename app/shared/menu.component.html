@@ -10,7 +10,7 @@
             <a href="#menu-toggle" id="menu-toggle" (click)="toggleMenu()">Toggle</a>
         </li>
         <li>
-            <a href="#">Dashboard</a>
+            <a [routerLink]="['Home']">Home</a>
         </li>
         <li>
             <a href="#">Shortcuts</a>
@@ -31,5 +31,5 @@
             <a href="#">Contact</a>
         </li>
     </ul>
-    
+    <router-outlet></router-outlet>     
 </div>
