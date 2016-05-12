@@ -16,9 +16,6 @@ import { HomeComponent } from './home/home.component'
 
 export class AppComponent {
     toggleMenu(): void{
-        console.log("THERE");
-        // var wrapper = document.getElementById('wrapper')
-        // wrapper.classList.add('toggled');
         $("#wrapper").toggleClass("toggled");
     }
 }
