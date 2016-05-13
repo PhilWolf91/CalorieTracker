@@ -11,11 +11,38 @@ System.register([], function(exports_1, context_1) {
                 Meal.prototype.calories = function () {
                     var totalCalories = 0;
                     this.foods.forEach(function (food) {
-                        if (food.calories != undefined) {
-                            totalCalories += food.calories;
+                        if (food.macros.calories != undefined) {
+                            totalCalories += food.macros.calories;
                         }
                     });
-                    return 1;
+                    return totalCalories;
+                };
+                Meal.prototype.carbohydrates = function () {
+                    var totalCarbohydrates = 0;
+                    this.foods.forEach(function (food) {
+                        if (food.macros.carbohydrates != undefined) {
+                            totalCarbohydrates += food.macros.carbohydrates;
+                        }
+                    });
+                    return totalCarbohydrates;
+                };
+                Meal.prototype.protein = function () {
+                    var totalProtein = 0;
+                    this.foods.forEach(function (food) {
+                        if (food.macros.protein != undefined) {
+                            totalProtein += food.macros.protein;
+                        }
+                    });
+                    return totalProtein;
+                };
+                Meal.prototype.fat = function () {
+                    var totalFats = 0;
+                    this.foods.forEach(function (food) {
+                        if (food.macros.fat != undefined) {
+                            totalFats += food.macros.fat;
+                        }
+                    });
+                    return totalFats;
                 };
                 return Meal;
             }());

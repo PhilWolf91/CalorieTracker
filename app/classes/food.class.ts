@@ -1,7 +1,6 @@
+import { Macros } from './macros.class'
+
 export class Food{
     foodName: string;
-    calories: number;
-    carbohydrates: number;
-    protein: number;
-    fat: number;
+    macros: Macros;
 }
