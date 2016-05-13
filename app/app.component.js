@@ -28,9 +28,6 @@ System.register(['angular2/core', 'angular2/router', './home/home.component'], f
                 function AppComponent() {
                 }
                 AppComponent.prototype.toggleMenu = function () {
-                    console.log("THERE");
-                    // var wrapper = document.getElementById('wrapper')
-                    // wrapper.classList.add('toggled');
                     $("#wrapper").toggleClass("toggled");
                 };
                 AppComponent = __decorate([
