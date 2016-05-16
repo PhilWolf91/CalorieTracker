@@ -2,6 +2,7 @@ import { Component } from 'angular2/core'
 import { RouteConfig, ROUTER_PROVIDERS, ROUTER_DIRECTIVES } from 'angular2/router'
 import { HomeComponent } from './home/home.component'
 import { MealDaysListComponent } from './meal-days-list/meal-days-list.component'
+import { MealDayAddComponent } from './meal-day-add/meal-day-add.component'
 
 @Component({
     selector: 'ctw-app',
@@ -15,7 +16,8 @@ import { MealDaysListComponent } from './meal-days-list/meal-days-list.component
 //component determines the actual component and the template associated to it
 @RouteConfig([
     { path: './home', name: 'Home', component: HomeComponent, useAsDefault: true },
-    { path: './meal-days-list', name: 'MealDaysList', component: MealDaysListComponent }
+    { path: './meal-days-list', name: 'MealDaysList', component: MealDaysListComponent },
+    { path: './meal-day-add', name: 'MealDayAdd', component: MealDayAddComponent}
 ])
 
 export class AppComponent {
