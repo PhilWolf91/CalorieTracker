@@ -2,23 +2,23 @@
 <table class="table">
     <tr>
         <td>Meal Day Name: </td>
-        <td><input type="text" class="form-input" value="ex: Day One" /></td>
+        <td><input [(ngModel)]='mealName' type="text" class="form-input" value="ex: Day One" /></td>
     </tr>
     <tr>
         <td>Calories for the day</td>
-        <td><input type="number" class="form-input" value="ex: 2500" /></td>
+        <td><input [(ngModel)]='calories' type="number" class="form-input" value="ex: 2500" /></td>
     </tr>
     <tr>
         <td>Protein for the day</td>
-        <td><input type="number" class="form-input" value="ex: 253" /></td>
+        <td><input [(ngModel)]='protein' type="number" class="form-input" /></td>
     </tr>
     <tr>
         <td>Carbs for the day</td>
-        <td><input type="number" class="form-input" value="ex: 253" /></td>
+        <td><input [(ngModel)]='carbohydrates' type="number" class="form-input" value="ex: 253" /></td>
     </tr>
     <tr>
         <td>Fat for the day</td>
-        <td><input type="number" class="form-input" value="ex: 57" /></td>
+        <td><input [(ngModel)]='fats' type="number" class="form-input" value="ex: 57" /></td>
     </tr>   
     <tr>
         <td></td>

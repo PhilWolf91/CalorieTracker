@@ -3,7 +3,43 @@
         <strong>Days</strong>
      </div>
      <div class="panel-body">
-         You don't have any days created in order to store your meals!
+         <table cellpadding="6">
+             <thead>
+                <tr>
+                    <th>Date Created</th>
+                    <th>Meal Name</th>
+                    <th>Calories</th>
+                    <th>Protein</th>
+                    <th>Carbs</th>
+                    <th>Fats</th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr *ngFor='#mealDay of mealDays'>
+                    <td>
+                        <span>{{mealDay.dateCreated}}</span>
+                    </td>
+                    <td>
+                        <span>{{mealDay.mealDayName}}</span>
+                    </td>
+                    <td>
+                        <span>{{mealDay.macros.calories}}</span>
+                    </td>
+                    <td>
+                        <span>{{mealDay.macros.protein}}</span>
+                    </td>
+                    <td>
+                        <span>{{mealDay.macros.carbohydrates}}</span>
+                    </td>
+                    <td>
+                        <span>{{mealDay.macros.fat}}</span>
+                    </td>
+                </tr>
+                <div [hidden]="!showNoMealDaysWarning">
+                    You don't have any days created in order to store your meals!
+                </div>
+            </tbody>
+         </table>
      </div>
      <div style="padding: 10px">
         <button class="btn btn-lg btn-block" (click)='goToAddMealDay()'>Click here to add a new day</button>

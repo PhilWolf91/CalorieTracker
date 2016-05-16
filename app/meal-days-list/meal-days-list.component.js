@@ -24,7 +24,15 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
             MealDaysListComponent = (function () {
                 function MealDaysListComponent(_router) {
                     this._router = _router;
+                    this.showNoMealDaysWarning = true;
+                    this.mealDays = new Array();
                     this.storage = window.localStorage;
+                    var mealDay = JSON.parse(this.storage.getItem('mealDays'));
+                    console.log(mealDay);
+                    this.mealDays.push(mealDay);
+                    if (this.mealDays.length) {
+                        this.showNoMealDaysWarning = false;
+                    }
                 }
                 MealDaysListComponent.prototype.goToAddMealDay = function () {
                     this._router.navigate(['MealDayAdd']);

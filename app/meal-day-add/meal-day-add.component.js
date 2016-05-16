@@ -23,9 +23,23 @@ System.register(['angular2/core', '../classes/mealDay.class'], function(exports_
         execute: function() {
             MealDayAddComponent = (function () {
                 function MealDayAddComponent() {
+                    this.mealName = "";
+                    this.protein = 0;
+                    this.calories = 0;
+                    this.carbohydrates = 0;
+                    this.fats = 0;
                     this.mealDayToAdd = new mealDay_class_1.MealDay();
+                    this.storage = window.localStorage;
                 }
                 MealDayAddComponent.prototype.AddNewMealDay = function () {
+                    console.log(this.mealName + " " + this.protein + " " + this.calories.toString() + " " + this.protein + " " + this.carbohydrates + " " + this.fats);
+                    this.mealDayToAdd.mealDayName = this.mealName;
+                    this.mealDayToAdd.macros.calories = this.calories;
+                    this.mealDayToAdd.macros.carbohydrates = this.carbohydrates;
+                    this.mealDayToAdd.macros.fat = this.fats;
+                    this.mealDayToAdd.macros.protein = this.protein;
+                    var mealDays = this.storage.getItem('mealDays');
+                    this.storage.setItem('mealDays', JSON.stringify(this.mealDayToAdd));
                 };
                 MealDayAddComponent = __decorate([
                     core_1.Component({
