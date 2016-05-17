@@ -1,5 +1,6 @@
 import { Component } from 'angular2/core'
 import { MealDay } from '../classes/mealDay.class'
+import { Router } from 'angular2/router'
 
 
 @Component({
@@ -16,7 +17,7 @@ export class MealDayAddComponent{
     fats: number = 0;
     storage: any;
     
-    constructor(){
+    constructor(private _router: Router){
         this.mealDayToAdd = new MealDay();
         this.storage = window.localStorage;
     }

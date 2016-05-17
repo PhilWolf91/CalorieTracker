@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../classes/mealDay.class'], function(exports_1, context_1) {
+System.register(['angular2/core', '../classes/mealDay.class', 'angular2/router'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', '../classes/mealDay.class'], function(exports_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, mealDay_class_1;
+    var core_1, mealDay_class_1, router_1;
     var MealDayAddComponent;
     return {
         setters:[
@@ -19,10 +19,14 @@ System.register(['angular2/core', '../classes/mealDay.class'], function(exports_
             },
             function (mealDay_class_1_1) {
                 mealDay_class_1 = mealDay_class_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
             MealDayAddComponent = (function () {
-                function MealDayAddComponent() {
+                function MealDayAddComponent(_router) {
+                    this._router = _router;
                     this.mealName = "";
                     this.protein = 0;
                     this.calories = 0;
@@ -57,7 +61,7 @@ System.register(['angular2/core', '../classes/mealDay.class'], function(exports_
                         selector: 'ctw-meal-day',
                         templateUrl: 'app/meal-day-add/meal-day-add.component.html'
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [router_1.Router])
                 ], MealDayAddComponent);
                 return MealDayAddComponent;
             }());

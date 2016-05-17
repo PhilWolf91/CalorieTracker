@@ -50,7 +50,7 @@ System.register(['angular2/core', 'angular2/router', './home/home.component', '.
                         { path: './home', name: 'Home', component: home_component_1.HomeComponent, useAsDefault: true },
                         { path: './meal-days-list', name: 'MealDaysList', component: meal_days_list_component_1.MealDaysListComponent },
                         { path: './meal-day-add', name: 'MealDayAdd', component: meal_day_add_component_1.MealDayAddComponent },
-                        { path: './meal-day-meals', name: 'MealDayMeals', component: meal_day_meals_component_1.MealDayMealsComponent }
+                        { path: './meal-day-meals:{mealDayId}', name: 'MealDayMeals', component: meal_day_meals_component_1.MealDayMealsComponent }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

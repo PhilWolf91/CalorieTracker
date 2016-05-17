@@ -43,8 +43,8 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                 MealDaysListComponent.prototype.goToAddMealDay = function () {
                     this._router.navigate(['MealDayAdd']);
                 };
-                MealDaysListComponent.prototype.goToEditMeals = function () {
-                    this._router.navigate(['MealDayMeals']);
+                MealDaysListComponent.prototype.goToEditMeals = function (mealDay) {
+                    this._router.navigate(['MealDayMeals', { mealDayId: mealDay.mealDayId }]);
                 };
                 MealDaysListComponent = __decorate([
                     core_1.Component({

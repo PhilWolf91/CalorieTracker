@@ -35,7 +35,7 @@
                         <span>{{mealDay.macros.fat}}</span>
                     </td>
                     <td>
-                        <button class="btn btn-block btn-primary" (click)='goToEditMeals()'>Edit Meals</button>
+                        <button class="btn btn-block btn-primary" (click)='goToEditMeals(mealDay)'>Edit Meals</button>
                     </td>
                 </tr>
                 <div [hidden]="!showNoMealDaysWarning">

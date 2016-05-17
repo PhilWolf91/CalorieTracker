@@ -19,7 +19,7 @@ import { MealDayMealsComponent } from './meal-day-meals/meal-day-meals.component
     { path: './home', name: 'Home', component: HomeComponent, useAsDefault: true },
     { path: './meal-days-list', name: 'MealDaysList', component: MealDaysListComponent },
     { path: './meal-day-add', name: 'MealDayAdd', component: MealDayAddComponent},
-    { path: './meal-day-meals', name: 'MealDayMeals', component: MealDayMealsComponent}
+    { path: './meal-day-meals:{mealDayId}', name: 'MealDayMeals', component: MealDayMealsComponent}
 ])
 
 export class AppComponent {

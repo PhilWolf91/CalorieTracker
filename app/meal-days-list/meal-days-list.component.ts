@@ -32,7 +32,7 @@ export class MealDaysListComponent {
         this._router.navigate(['MealDayAdd']);
     }
     
-    goToEditMeals(){
-        this._router.navigate(['MealDayMeals'])
+    goToEditMeals(mealDay: MealDay){
+        this._router.navigate(['MealDayMeals', {mealDayId: mealDay.mealDayId}])
     }
 }
