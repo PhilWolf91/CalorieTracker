@@ -1,0 +1,27 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">Edit Meals</div>
+    <div class="panel-body">
+        <table class="table" [hidden]='showNoMealsWarning'>
+            <thead>
+                <tr>
+                    <td>Meal Name</td>
+                    <td>Meal Calories</td>
+                    <td>Meal Protein</td>
+                    <td>Meal Carbs</td>
+                    <td>Meal Fats</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <div [hidden]='!showNoMealsWarning'>You don't have any meals</div>
+        <div><button class="btn btn-block btn-primary">Click here to Add a new Meal</button></div>
+    </div>
+</div>

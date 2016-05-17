@@ -23,19 +23,28 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
         execute: function() {
             MealDaysListComponent = (function () {
                 function MealDaysListComponent(_router) {
+                    var _this = this;
                     this._router = _router;
                     this.showNoMealDaysWarning = true;
                     this.mealDays = new Array();
                     this.storage = window.localStorage;
-                    var mealDay = JSON.parse(this.storage.getItem('mealDays'));
-                    console.log(mealDay);
-                    this.mealDays.push(mealDay);
+                    // var mealDay: MealDay = JSON.parse(this.storage.getItem('mealDays'));
+                    // this.mealDays.push(mealDay);
+                    var mealDaysInStorage = JSON.parse(this.storage.getItem('mealDays'));
+                    var mealDays = JSON.parse(this.storage.getItem('mealDays'));
+                    console.log(mealDays);
+                    mealDays.forEach(function (meal) {
+                        _this.mealDays.push(meal);
+                    });
                     if (this.mealDays.length) {
                         this.showNoMealDaysWarning = false;
                     }
                 }
                 MealDaysListComponent.prototype.goToAddMealDay = function () {
                     this._router.navigate(['MealDayAdd']);
+                };
+                MealDaysListComponent.prototype.goToEditMeals = function () {
+                    this._router.navigate(['MealDayMeals']);
                 };
                 MealDaysListComponent = __decorate([
                     core_1.Component({

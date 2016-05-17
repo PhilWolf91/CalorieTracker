@@ -13,9 +13,16 @@ export class MealDaysListComponent {
     constructor(private _router: Router){
         this.mealDays = new Array<MealDay>();
         this.storage = window.localStorage;
-        var mealDay: MealDay = JSON.parse(this.storage.getItem('mealDays'));
-        console.log(mealDay);
-        this.mealDays.push(mealDay);
+        
+        // var mealDay: MealDay = JSON.parse(this.storage.getItem('mealDays'));
+        
+        // this.mealDays.push(mealDay);
+        var mealDaysInStorage = JSON.parse(this.storage.getItem('mealDays'));
+        var mealDays: Array<MealDay> = JSON.parse(this.storage.getItem('mealDays'));
+        console.log(mealDays);
+        mealDays.forEach(meal => {
+            this.mealDays.push(meal);
+        })
         if(this.mealDays.length){
             this.showNoMealDaysWarning = false;
         }
@@ -23,5 +30,9 @@ export class MealDaysListComponent {
     
     goToAddMealDay(){
         this._router.navigate(['MealDayAdd']);
+    }
+    
+    goToEditMeals(){
+        this._router.navigate(['MealDayMeals'])
     }
 }
