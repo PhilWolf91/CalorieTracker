@@ -1,1 +1,1 @@
-{"version":3,"file":"mealDay.class.js","sourceRoot":"","sources":["mealDay.class.ts"],"names":[],"mappings":";;;;;;;;;;;YAEA;gBAKI;oBACI,IAAI,CAAC,MAAM,GAAG,IAAI,qBAAM,EAAE,CAAC;oBAC3B,IAAI,CAAC,WAAW,GAAG,IAAI,IAAI,EAAE,CAAC;gBAClC,CAAC;gBACL,cAAC;YAAD,CAAC,AATD,IASC;YATD,6BASC,CAAA"}
+{"version":3,"file":"mealDay.class.js","sourceRoot":"","sources":["mealDay.class.ts"],"names":[],"mappings":";;;;;;;;;;;YAGA;gBAMI;oBACI,IAAI,CAAC,MAAM,GAAG,IAAI,qBAAM,EAAE,CAAC;oBAC3B,IAAI,CAAC,WAAW,GAAG,IAAI,IAAI,EAAE,CAAC;gBAClC,CAAC;gBACL,cAAC;YAAD,CAAC,AAVD,IAUC;YAVD,6BAUC,CAAA"}

@@ -17,12 +17,15 @@ export class MealDaysListComponent {
         // var mealDay: MealDay = JSON.parse(this.storage.getItem('mealDays'));
         
         // this.mealDays.push(mealDay);
-        var mealDaysInStorage = JSON.parse(this.storage.getItem('mealDays'));
+        // var mealDaysInStorage = JSON.parse(this.storage.getItem('mealDays'));
         var mealDays: Array<MealDay> = JSON.parse(this.storage.getItem('mealDays'));
         console.log(mealDays);
-        mealDays.forEach(meal => {
-            this.mealDays.push(meal);
-        })
+        if(mealDays != undefined){
+            mealDays.forEach(meal => {
+                this.mealDays.push(meal);
+            })    
+        }
+        
         if(this.mealDays.length){
             this.showNoMealDaysWarning = false;
         }

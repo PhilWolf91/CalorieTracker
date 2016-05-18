@@ -30,12 +30,14 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                     this.storage = window.localStorage;
                     // var mealDay: MealDay = JSON.parse(this.storage.getItem('mealDays'));
                     // this.mealDays.push(mealDay);
-                    var mealDaysInStorage = JSON.parse(this.storage.getItem('mealDays'));
+                    // var mealDaysInStorage = JSON.parse(this.storage.getItem('mealDays'));
                     var mealDays = JSON.parse(this.storage.getItem('mealDays'));
                     console.log(mealDays);
-                    mealDays.forEach(function (meal) {
-                        _this.mealDays.push(meal);
-                    });
+                    if (mealDays != undefined) {
+                        mealDays.forEach(function (meal) {
+                            _this.mealDays.push(meal);
+                        });
+                    }
                     if (this.mealDays.length) {
                         this.showNoMealDaysWarning = false;
                     }

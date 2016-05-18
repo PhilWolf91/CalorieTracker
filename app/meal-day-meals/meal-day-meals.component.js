@@ -22,17 +22,30 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
             }],
         execute: function() {
             MealDayMealsComponent = (function () {
-                function MealDayMealsComponent(_router) {
+                function MealDayMealsComponent(_router, _routeParams) {
+                    var _this = this;
                     this._router = _router;
+                    this._routeParams = _routeParams;
                     this.showNoMealsWarning = true;
                     this.storage = window.localStorage;
+                    var currentMealDayId = this._routeParams.get('mealDayId');
+                    var mealDays = JSON.parse(this.storage.getItem('mealDays'));
+                    //Set the Current Meal Day for later use
+                    if (mealDays != undefined) {
+                        console.log(mealDays);
+                        mealDays.forEach(function (meal) {
+                            if (meal.mealDayId == Number.parseInt(currentMealDayId)) {
+                                _this.currentMealDay = meal;
+                            }
+                        });
+                    }
                 }
                 MealDayMealsComponent = __decorate([
                     core_1.Component({
                         selector: 'ctw-meal-day-meals',
                         templateUrl: 'app/meal-day-meals/meal-day-meals.component.html'
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router])
+                    __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams])
                 ], MealDayMealsComponent);
                 return MealDayMealsComponent;
             }());
