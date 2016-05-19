@@ -40,6 +40,9 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                         });
                     }
                 }
+                MealDayMealsComponent.prototype.addNewMeal = function () {
+                    this._router.navigate(['MealAdd']);
+                };
                 MealDayMealsComponent = __decorate([
                     core_1.Component({
                         selector: 'ctw-meal-day-meals',

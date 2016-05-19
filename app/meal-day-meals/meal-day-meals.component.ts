@@ -32,6 +32,9 @@ export class MealDayMealsComponent{
         }
     }
     
+    addNewMeal(){
+        this._router.navigate(['MealAdd'])
+    }
     
     
 }

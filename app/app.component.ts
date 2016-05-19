@@ -4,6 +4,8 @@ import { HomeComponent } from './home/home.component'
 import { MealDaysListComponent } from './meal-days-list/meal-days-list.component'
 import { MealDayAddComponent } from './meal-day-add/meal-day-add.component'
 import { MealDayMealsComponent } from './meal-day-meals/meal-day-meals.component'
+import { MealAddComponent } from './meal-add/meal-add.component'
+import { FoodListComponent } from './food-list/food-list.component'
 
 @Component({
     selector: 'ctw-app',
@@ -19,7 +21,8 @@ import { MealDayMealsComponent } from './meal-day-meals/meal-day-meals.component
     { path: './home', name: 'Home', component: HomeComponent, useAsDefault: true },
     { path: './meal-days-list', name: 'MealDaysList', component: MealDaysListComponent },
     { path: './meal-day-add', name: 'MealDayAdd', component: MealDayAddComponent},
-    { path: './meal-day-meals:{mealDayId}', name: 'MealDayMeals', component: MealDayMealsComponent}
+    { path: './meal-day-meals:{mealDayId}', name: 'MealDayMeals', component: MealDayMealsComponent},
+    { path: './meal-add:{mealDayId}', name: 'MealAdd', component: MealAddComponent}
 ])
 
 export class AppComponent {

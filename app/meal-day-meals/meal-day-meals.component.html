@@ -22,6 +22,6 @@
             </tbody>
         </table>
         <div [hidden]='!showNoMealsWarning'>You don't have any meals</div>
-        <div><button class="btn btn-block btn-primary">Click here to Add a new Meal</button></div>
+        <div><button (click)='addNewMeal(currentMealDayId)'class="btn btn-block btn-primary">Click here to Add a new Meal</button></div>
     </div>
 </div>

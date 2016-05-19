@@ -11,7 +11,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, router_1;
-    var FoodList;
+    var FoodListComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -21,29 +21,34 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                 router_1 = router_1_1;
             }],
         execute: function() {
-            FoodList = (function () {
-                function FoodList() {
+            FoodListComponent = (function () {
+                function FoodListComponent() {
+                    this.showNoFoodWarning = true;
+                    this.meals = new Array();
                 }
-                FoodList.prototype.calculateCalories = function () {
+                FoodListComponent.prototype.calculateCalories = function () {
                     var totalCalories = 0;
-                    this.meals.forEach(function (meal) {
-                        if (meal.calories !== undefined) {
-                            totalCalories += meal.calories();
-                        }
-                    });
+                    if (this.meals != undefined) {
+                        this.meals.forEach(function (meal) {
+                            if (meal.calories !== undefined) {
+                                totalCalories += meal.calories();
+                            }
+                        });
+                    }
                     return totalCalories;
                 };
-                FoodList = __decorate([
+                FoodListComponent = __decorate([
                     core_1.Component({
                         selector: 'ctw-food-list',
-                        templateUrl: './food-list.component.html',
-                        directives: [router_1.ROUTER_DIRECTIVES]
+                        templateUrl: 'app/food-list/food-list.component.html',
+                        directives: [router_1.ROUTER_DIRECTIVES],
+                        inputs: ['mealDayMealId']
                     }), 
                     __metadata('design:paramtypes', [])
-                ], FoodList);
-                return FoodList;
+                ], FoodListComponent);
+                return FoodListComponent;
             }());
-            exports_1("FoodList", FoodList);
+            exports_1("FoodListComponent", FoodListComponent);
         }
     }
 });
