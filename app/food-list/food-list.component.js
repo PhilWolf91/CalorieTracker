@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router'], function(exports_1, context_1) {
+System.register(['../food-add/food-add.component', 'angular2/core', 'angular2/router', '../services/localStorage.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,41 +10,48 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1;
+    var food_add_component_1, core_1, router_1, localStorage_service_1;
     var FoodListComponent;
     return {
         setters:[
+            function (food_add_component_1_1) {
+                food_add_component_1 = food_add_component_1_1;
+            },
             function (core_1_1) {
                 core_1 = core_1_1;
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (localStorage_service_1_1) {
+                localStorage_service_1 = localStorage_service_1_1;
             }],
         execute: function() {
             FoodListComponent = (function () {
-                function FoodListComponent() {
+                function FoodListComponent(_localStorageSvc) {
+                    this._localStorageSvc = _localStorageSvc;
                     this.showNoFoodWarning = true;
-                    this.meals = new Array();
+                    this.showAddFoodPanel = false;
+                    this.mealDays = _localStorageSvc.GetMealDays();
+                    console.log(this.mealDays);
                 }
-                FoodListComponent.prototype.calculateCalories = function () {
-                    var totalCalories = 0;
-                    if (this.meals != undefined) {
-                        this.meals.forEach(function (meal) {
-                            if (meal.calories !== undefined) {
-                                totalCalories += meal.calories();
-                            }
-                        });
+                FoodListComponent.prototype.toggleAddFoodPanel = function () {
+                    if (this.showAddFoodPanel) {
+                        this.showAddFoodPanel = false;
                     }
-                    return totalCalories;
+                    else {
+                        this.showAddFoodPanel = true;
+                    }
+                    console.log(this.showAddFoodPanel);
                 };
                 FoodListComponent = __decorate([
                     core_1.Component({
                         selector: 'ctw-food-list',
                         templateUrl: 'app/food-list/food-list.component.html',
-                        directives: [router_1.ROUTER_DIRECTIVES],
-                        inputs: ['mealDayMealId']
+                        directives: [router_1.ROUTER_DIRECTIVES, food_add_component_1.FoodAddComponent],
+                        inputs: ['mealDayMealId', 'mealDayId']
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [localStorage_service_1.LocalStorageService])
                 ], FoodListComponent);
                 return FoodListComponent;
             }());

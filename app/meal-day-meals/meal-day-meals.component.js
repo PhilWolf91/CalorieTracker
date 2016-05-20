@@ -46,7 +46,8 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                 MealDayMealsComponent = __decorate([
                     core_1.Component({
                         selector: 'ctw-meal-day-meals',
-                        templateUrl: 'app/meal-day-meals/meal-day-meals.component.html'
+                        templateUrl: 'app/meal-day-meals/meal-day-meals.component.html',
+                        inputs: ['mealDayId']
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams])
                 ], MealDayMealsComponent);

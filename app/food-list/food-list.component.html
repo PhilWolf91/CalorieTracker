@@ -1,4 +1,12 @@
+
 <h4>Food consumed this meal:</h4>
-<div class="row">
-    <div class="col-xs-12" [hidden]='showNoFoodWarning()'> No Foods have been added to this Meal</div>
+<div class="row" [hidden]='!showNoFoodWarning'>
+    <div class="col-md-6" > No Foods have been added to this Meal</div>
+    <div class="col-md-6" >
+        <button (click)='toggleAddFoodPanel()' class="btn btn-block btn-primary">Add Food</button>
+        <span>**Click this to toggle the add food window</span>
+    </div>
+</div>
+<div [hidden]='!showAddFoodPanel'>
+    <ctw-food-add></ctw-food-add>
 </div>

@@ -1,14 +1,16 @@
-import { Component } from 'angular2/core'
+import { Component, Input } from 'angular2/core'
 import { Router, RouteParams } from 'angular2/router'
 import { MealDay } from '../classes/mealDay.class'
 
 @Component({
     selector: 'ctw-meal-day-meals',
-    templateUrl: 'app/meal-day-meals/meal-day-meals.component.html'
+    templateUrl: 'app/meal-day-meals/meal-day-meals.component.html',
+    inputs: ['mealDayId']
 })
 
 export class MealDayMealsComponent{
     
+    mealDayId: number;
     mealDays: Array<MealDay>;
     currentMealDay: MealDay;
     showNoMealsWarning: boolean = true;

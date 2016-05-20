@@ -14,6 +14,7 @@ export class MealAddComponent{
     mealDayId: number;
     mealDayName: string;
     showNoFoodsWarning: boolean = true;
+    showAddFoodPane: boolean = false;
     foods: Array<Food>;
     storage: any;
     
@@ -26,7 +27,7 @@ export class MealAddComponent{
         this._router.navigate(['MealDayMeals', { mealDayId: this.mealDayId}]);
     }
     
-    addFood(){
-        
+    toggleAddFoodPane(){
+        this.showAddFoodPane = false ? true : false;
     }
 }

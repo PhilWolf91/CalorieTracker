@@ -1,0 +1,51 @@
+<div style="padding-top:20px"></div>
+<div class="row">
+    <div class="col-md-12">
+        <h4>Add Food to Meal</h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <span>Food Name</span>
+    </div>
+    <div class="col-md-6">
+        <input [(ngModel)]='foodName' type="text" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <span>Calories</span>
+    </div>
+    <div class="col-md-6">
+        <input [(ngModel)]='macros.calories' type="number" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <span>Protein</span>
+    </div>
+    <div class="col-md-6">
+        <input [(ngModel)]='macros.protein' type="number" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <span>Carbs</span>
+    </div>
+    <div class="col-md-6">
+        <input [(ngModel)]='macros.carbohydrates' type="number" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <span>Fats</span>
+    </div>
+    <div class="col-md-6">
+        <input [(ngModel)]='macros.fats' type="number" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <button (click)='saveFood()' class="btn btn-block btn-primary">Add</button>
+    </div>
+</div>

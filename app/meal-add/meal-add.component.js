@@ -29,13 +29,15 @@ System.register(['angular2/core', 'angular2/router', '../food-list/food-list.com
                     this._router = _router;
                     this._routeParams = _routeParams;
                     this.showNoFoodsWarning = true;
+                    this.showAddFoodPane = false;
                     this.mealDayId = Number.parseInt(_routeParams.get('mealDayId'));
                     this.storage = window.localStorage;
                 }
                 MealAddComponent.prototype.addMeal = function () {
                     this._router.navigate(['MealDayMeals', { mealDayId: this.mealDayId }]);
                 };
-                MealAddComponent.prototype.addFood = function () {
+                MealAddComponent.prototype.toggleAddFoodPane = function () {
+                    this.showAddFoodPane = false ? true : false;
                 };
                 MealAddComponent = __decorate([
                     core_1.Component({

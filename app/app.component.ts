@@ -6,12 +6,13 @@ import { MealDayAddComponent } from './meal-day-add/meal-day-add.component'
 import { MealDayMealsComponent } from './meal-day-meals/meal-day-meals.component'
 import { MealAddComponent } from './meal-add/meal-add.component'
 import { FoodListComponent } from './food-list/food-list.component'
+import { LocalStorageService } from './services/localStorage.service'
 
 @Component({
     selector: 'ctw-app',
     templateUrl: './app/app.component.html',
-    providers: [ROUTER_PROVIDERS],
-    directives: [ROUTER_DIRECTIVES, HomeComponent, MealDaysListComponent]
+    providers: [ROUTER_PROVIDERS, LocalStorageService],
+    directives: [ROUTER_DIRECTIVES, HomeComponent, MealDaysListComponent],
 })
 
 //path is just aesthetic to the URL
