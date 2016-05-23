@@ -1,6 +1,8 @@
 import { Injectable } from 'angular2/core'
 import { MealDay } from '../classes/mealDay.class'
 import { Food } from '../classes/food.class'
+import { Meal } from '../classes/meal.class'
+import { MealDayMeals } from '../classes/mealDayMeals.class'
 
 @Injectable()
 export class LocalStorageService{
@@ -22,6 +24,30 @@ export class LocalStorageService{
         var serializedValue = JSON.stringify(value);
         this._localStorage.setItem(key, value);
     }
+    
+    //Meals
+    
+    public GetMealsForAMealDayId(mealDayId: number): Array<Meal>{
+        var meals = new Array<Meal>();
+        var mealDayMeals = new Array<MealDayMeals>();
+        var mealDayMealsInStorage = this._localStorage.getItem(this.mealDayMealsKey);
+        
+        if(mealDayMealsInStorage){
+            mealDayMeals = JSON.parse(mealDayMealsInStorage);
+            
+            mealDayMeals.forEach(mealDayMeal => {
+                if(mealDayMeal.mealDayId == mealDayId){
+                    return mealDayMeal.meals;
+                }
+            });
+        }
+        
+        return meals;    
+        
+    }
+    
+    
+    
     
     //MealDays
     
@@ -60,8 +86,13 @@ export class LocalStorageService{
             else{
                 foods = new Array<Food>();
             }
+            
             food.foodId = foods.length + 1;
-            food.mealId = mealId;
+            
+            if(!food.mealId){
+                food.mealId = mealId;    
+            }
+            
             foods.push(food);
             console.log(foods);
             this.SetKey(this.foodsKey, JSON.stringify(foods));

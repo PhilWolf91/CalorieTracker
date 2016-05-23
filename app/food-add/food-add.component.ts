@@ -14,18 +14,23 @@ export class FoodAddComponent{
     addedFood: Food;
     foodName: string;
     macros: Macros;
-    mealId: number;
+    mealDayMealId: number;
     
     constructor(private _localStorageSvc: LocalStorageService){
         this.macros = new Macros();
+        
+        
+        console.log("Food Add Component - Meal Day Meal Id - " + this.mealDayMealId);
     }
     
     saveFood(){
         var food: Food = new Food();
         food.foodName = this.foodName;
         food.macros = this.macros; 
+        food.mealId = this.mealDayMealId;
+        food.foodId = 0;
 
-        var foodSaved: boolean = this._localStorageSvc.SaveFoodForAMeal(food, this.mealId)
+        var foodSaved: boolean = this._localStorageSvc.SaveFoodForAMeal(food, this.mealDayMealId)
         if(foodSaved){
             this.addedFood = food;
         }

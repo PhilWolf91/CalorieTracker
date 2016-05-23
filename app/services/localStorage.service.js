@@ -33,6 +33,21 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     var serializedValue = JSON.stringify(value);
                     this._localStorage.setItem(key, value);
                 };
+                //Meals
+                LocalStorageService.prototype.GetMealsForAMealDayId = function (mealDayId) {
+                    var meals = new Array();
+                    var mealDayMeals = new Array();
+                    var mealDayMealsInStorage = this._localStorage.getItem(this.mealDayMealsKey);
+                    if (mealDayMealsInStorage) {
+                        mealDayMeals = JSON.parse(mealDayMealsInStorage);
+                        mealDayMeals.forEach(function (mealDayMeal) {
+                            if (mealDayMeal.mealDayId == mealDayId) {
+                                return mealDayMeal.meals;
+                            }
+                        });
+                    }
+                    return meals;
+                };
                 //MealDays
                 LocalStorageService.prototype.SaveMealDay = function (mealDay) {
                     var serializedMealDays = this.GetKey(this.mealDaysKey);
@@ -62,7 +77,9 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                             foods = new Array();
                         }
                         food.foodId = foods.length + 1;
-                        food.mealId = mealId;
+                        if (!food.mealId) {
+                            food.mealId = mealId;
+                        }
                         foods.push(food);
                         console.log(foods);
                         this.SetKey(this.foodsKey, JSON.stringify(foods));
