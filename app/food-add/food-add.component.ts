@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit } from 'angular2/core'
+import { Component, Input, Output, OnInit, EventEmitter } from 'angular2/core'
 import { Food } from '../classes/food.class'
 import { Macros } from '../classes/macros.class'
 import { LocalStorageService } from '../services/localStorage.service'
@@ -7,12 +7,14 @@ import { LocalStorageService } from '../services/localStorage.service'
 @Component({
     selector: 'ctw-food-add',
     templateUrl: 'app/food-add/food-add.component.html',
-    inputs: ['mealDayMealId']
+    inputs: ['mealDayMealId'],
+    outputs: ['foodWasAdded']
 })
 
 export class FoodAddComponent{
     
-    addedFood: Food;
+    foodToAdd: Food = new Food();
+    foodWasAdded: EventEmitter<Food> = new EventEmitter<Food>();
     foodName: string;
     macros: Macros;
     mealDayMealId: number;
@@ -26,19 +28,16 @@ export class FoodAddComponent{
     }
     
     saveFood(){
-        var food: Food = new Food();
-        food.foodName = this.foodName;
-        food.macros = this.macros; 
-        food.mealId = this.mealDayMealId;
-        food.foodId = 0;
-
-        var foodSaved: boolean = this._localStorageSvc.SaveFoodForAMeal(food, this.mealDayMealId)
+        var foodSaved: boolean = this._localStorageSvc.SaveFoodForAMeal(this.foodToAdd, this.mealDayMealId)
         if(foodSaved){
-            this.addedFood = food;
+            
         }
         else{
             alert("Food could not be saved");
         }
+        
+        this.foodWasAdded.emit(this.foodToAdd);
+        this.foodToAdd = new Food();
     }
     
     

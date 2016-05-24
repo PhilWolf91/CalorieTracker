@@ -18,7 +18,7 @@ export class FoodListComponent {
     mealDays: Array<MealDay>;
     currentMealDay: MealDay;
     mealDayMealId: number;
-    foods: Array<Food>;
+    foods: Array<Food> = new Array<Food>();
     showNoFoodWarning: boolean = true;
     showAddFoodPanel: boolean = false;
     
@@ -42,16 +42,10 @@ export class FoodListComponent {
         console.log(this.showAddFoodPanel);
     }
     
-    // calculateCalories (): number {
-    //     var totalCalories: number = 0;
-    //     if(this.meals != undefined){
-    //         this.meals.forEach(meal => {
-    //             if(meal.calories !== undefined){
-    //                 totalCalories +=  meal.calories();
-    //             }
-    //         })    
-    //     }
-        
-    //     return totalCalories;
-    // }
+    onFoodAdded(food: Food){
+        this.foods.push(food);
+        this.showNoFoodWarning = false;
+        console.log("Food-list - onFoodAdded: ");
+        console.log(food);
+    }
 }

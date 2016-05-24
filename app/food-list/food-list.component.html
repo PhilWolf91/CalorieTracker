@@ -1,5 +1,30 @@
 
 <h4>Food consumed this meal:</h4>
+<div class="row">
+    
+</div>
+<div *ngFor="#food of foods">
+    <div class="row">
+        <div class="col-md-12">
+            <label>{{food.foodName}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <span>Calories: {{food.macros.calories}}</span>
+        </div>
+        <div class="col-md-3">
+            <span>Protein: {{food.macros.protein}}</span>
+        </div>
+        <div class="col-md-3">
+            <span>Carbs: {{food.macros.carbohydrates}}</span>
+        </div>
+        <div class="col-md-3">
+            <span>Fats: {{food.macros.fats}}</span>
+        </div>
+    </div>
+    <hr />
+</div>
 <div class="row" [hidden]='!showNoFoodWarning'>
     <div class="col-md-6" > No Foods have been added to this Meal</div>
     <div class="col-md-6" >
@@ -8,5 +33,5 @@
     </div>
 </div>
 <div [hidden]='!showAddFoodPanel'>
-    <ctw-food-add [mealDayMealId]='mealDayMealId'></ctw-food-add>
+    <ctw-food-add [mealDayMealId]='mealDayMealId' (foodWasAdded)='onFoodAdded($event)'></ctw-food-add>
 </div>

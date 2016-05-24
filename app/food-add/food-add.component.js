@@ -30,30 +30,29 @@ System.register(['angular2/core', '../classes/food.class', '../classes/macros.cl
             FoodAddComponent = (function () {
                 function FoodAddComponent(_localStorageSvc) {
                     this._localStorageSvc = _localStorageSvc;
+                    this.foodToAdd = new food_class_1.Food();
+                    this.foodWasAdded = new core_1.EventEmitter();
                     this.macros = new macros_class_1.Macros();
                 }
                 FoodAddComponent.prototype.ngOnInit = function () {
                     console.log("Food Add Component - Meal Day Meal Id - " + this.mealDayMealId);
                 };
                 FoodAddComponent.prototype.saveFood = function () {
-                    var food = new food_class_1.Food();
-                    food.foodName = this.foodName;
-                    food.macros = this.macros;
-                    food.mealId = this.mealDayMealId;
-                    food.foodId = 0;
-                    var foodSaved = this._localStorageSvc.SaveFoodForAMeal(food, this.mealDayMealId);
+                    var foodSaved = this._localStorageSvc.SaveFoodForAMeal(this.foodToAdd, this.mealDayMealId);
                     if (foodSaved) {
-                        this.addedFood = food;
                     }
                     else {
                         alert("Food could not be saved");
                     }
+                    this.foodWasAdded.emit(this.foodToAdd);
+                    this.foodToAdd = new food_class_1.Food();
                 };
                 FoodAddComponent = __decorate([
                     core_1.Component({
                         selector: 'ctw-food-add',
                         templateUrl: 'app/food-add/food-add.component.html',
-                        inputs: ['mealDayMealId']
+                        inputs: ['mealDayMealId'],
+                        outputs: ['foodWasAdded']
                     }), 
                     __metadata('design:paramtypes', [localStorage_service_1.LocalStorageService])
                 ], FoodAddComponent);

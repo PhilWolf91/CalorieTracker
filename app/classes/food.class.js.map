@@ -1,1 +1,1 @@
-{"version":3,"file":"food.class.js","sourceRoot":"","sources":["food.class.ts"],"names":[],"mappings":";;;;;;;YAEA;gBAAA;gBAKA,CAAC;gBAAD,WAAC;YAAD,CAAC,AALD,IAKC;YALD,uBAKC,CAAA"}
+{"version":3,"file":"food.class.js","sourceRoot":"","sources":["food.class.ts"],"names":[],"mappings":";;;;;;;;;;;YAEA;gBACI;oBACI,IAAI,CAAC,MAAM,GAAG,IAAI,qBAAM,EAAE,CAAC;gBAC/B,CAAC;gBAKL,WAAC;YAAD,CAAC,AARD,IAQC;YARD,uBAQC,CAAA"}

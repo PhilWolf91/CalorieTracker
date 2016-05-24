@@ -30,6 +30,7 @@ System.register(['../food-add/food-add.component', 'angular2/core', 'angular2/ro
             FoodListComponent = (function () {
                 function FoodListComponent(_localStorageSvc) {
                     this._localStorageSvc = _localStorageSvc;
+                    this.foods = new Array();
                     this.showNoFoodWarning = true;
                     this.showAddFoodPanel = false;
                     this.mealDays = _localStorageSvc.GetMealDays();
@@ -47,6 +48,12 @@ System.register(['../food-add/food-add.component', 'angular2/core', 'angular2/ro
                         this.showAddFoodPanel = true;
                     }
                     console.log(this.showAddFoodPanel);
+                };
+                FoodListComponent.prototype.onFoodAdded = function (food) {
+                    this.foods.push(food);
+                    this.showNoFoodWarning = false;
+                    console.log("Food-list - onFoodAdded: ");
+                    console.log(food);
                 };
                 FoodListComponent = __decorate([
                     core_1.Component({
