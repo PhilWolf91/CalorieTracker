@@ -31,10 +31,9 @@ System.register(['angular2/core', '../classes/food.class', '../classes/macros.cl
                 function FoodAddComponent(_localStorageSvc) {
                     this._localStorageSvc = _localStorageSvc;
                     this.macros = new macros_class_1.Macros();
-                    console.log("Food Add Component - Meal Day Meal Id - " + this.mealDayMealId);
                 }
                 FoodAddComponent.prototype.ngOnInit = function () {
-                    console.log(this.mealDayMealId);
+                    console.log("Food Add Component - Meal Day Meal Id - " + this.mealDayMealId);
                 };
                 FoodAddComponent.prototype.saveFood = function () {
                     var food = new food_class_1.Food();

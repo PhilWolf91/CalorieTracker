@@ -19,13 +19,10 @@ export class FoodAddComponent{
     
     constructor(private _localStorageSvc: LocalStorageService){
         this.macros = new Macros();
-        
-        
-        console.log("Food Add Component - Meal Day Meal Id - " + this.mealDayMealId);
     }
     
     ngOnInit(){
-        console.log(this.mealDayMealId);
+        console.log("Food Add Component - Meal Day Meal Id - " + this.mealDayMealId);
     }
     
     saveFood(){
