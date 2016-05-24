@@ -1,12 +1,13 @@
-import { Component, Input, Output } from 'angular2/core'
+import { Component, Input, Output, OnInit } from 'angular2/core'
 import { Food } from '../classes/food.class'
 import { Macros } from '../classes/macros.class'
 import { LocalStorageService } from '../services/localStorage.service'
 
+
 @Component({
     selector: 'ctw-food-add',
     templateUrl: 'app/food-add/food-add.component.html',
-    inputs: ['mealId']
+    inputs: ['mealDayMealId']
 })
 
 export class FoodAddComponent{
@@ -21,6 +22,10 @@ export class FoodAddComponent{
         
         
         console.log("Food Add Component - Meal Day Meal Id - " + this.mealDayMealId);
+    }
+    
+    ngOnInit(){
+        console.log(this.mealDayMealId);
     }
     
     saveFood(){

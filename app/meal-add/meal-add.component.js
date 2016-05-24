@@ -35,9 +35,11 @@ System.register(['angular2/core', 'angular2/router', '../food-list/food-list.com
                     this.showNoFoodsWarning = true;
                     this.showAddFoodPane = false;
                     this.mealDayId = Number.parseInt(_routeParams.get('mealDayId'));
+                }
+                MealAddComponent.prototype.ngOnInit = function () {
                     this.setCurrentMealDayMealId();
                     console.log("Current MealDayMealId: " + this.mealDayMealId);
-                }
+                };
                 MealAddComponent.prototype.setCurrentMealDayMealId = function () {
                     var totalMeals = this._storage.GetMealsForAMealDayId(this.mealDayId);
                     if (totalMeals.length) {

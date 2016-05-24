@@ -1,4 +1,4 @@
-import { Component } from 'angular2/core'
+import { Component, OnInit } from 'angular2/core'
 import { Router, RouteParams } from 'angular2/router'
 import { FoodListComponent } from '../food-list/food-list.component'
 import { Food } from '../classes/food.class'
@@ -22,11 +22,13 @@ export class MealAddComponent{
     
     constructor(private _router: Router, private _routeParams: RouteParams,
                 private _storage: LocalStorageService){   
-       this.mealDayId = Number.parseInt(_routeParams.get('mealDayId'));
-
-       this.setCurrentMealDayMealId();
-       console.log("Current MealDayMealId: " + this.mealDayMealId);
        
+       this.mealDayId = Number.parseInt(_routeParams.get('mealDayId'));
+    }
+    
+    ngOnInit(){
+       this.setCurrentMealDayMealId();
+        console.log("Current MealDayMealId: " + this.mealDayMealId);
     }
     
     setCurrentMealDayMealId(){

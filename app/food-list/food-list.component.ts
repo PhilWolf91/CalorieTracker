@@ -1,7 +1,7 @@
 import { Meal } from '../classes/meal.class'
 import { Food } from '../classes/food.class'
 import { FoodAddComponent } from '../food-add/food-add.component'
-import { Component, Input, Output } from 'angular2/core'
+import { Component, Input, Output, OnInit } from 'angular2/core'
 import { ROUTER_DIRECTIVES } from 'angular2/router'
 import { LocalStorageService } from '../services/localStorage.service'
 import { MealDay } from '../classes/mealDay.class'
@@ -10,14 +10,13 @@ import { MealDay } from '../classes/mealDay.class'
     selector: 'ctw-food-list',
     templateUrl: 'app/food-list/food-list.component.html',
     directives: [ROUTER_DIRECTIVES, FoodAddComponent],
-    inputs: ['mealDayMealId', 'mealDayId']
+    inputs: ['mealDayMealId']
 })
 
 export class FoodListComponent {
     
     mealDays: Array<MealDay>;
     currentMealDay: MealDay;
-    mealDayId: number;
     mealDayMealId: number;
     foods: Array<Food>;
     showNoFoodWarning: boolean = true;
@@ -25,7 +24,12 @@ export class FoodListComponent {
     
     constructor(private _localStorageSvc: LocalStorageService){
         this.mealDays = _localStorageSvc.GetMealDays();
+        console.log("Food List Component - Meal Day Meal Id: " + this.mealDayMealId);
         console.log(this.mealDays);
+    }
+    
+    ngOnInit(){
+        console.log("Food List Component:OnInit - Meal Day Meal Id: " + this.mealDayMealId);
     }
     
     toggleAddFoodPanel(){

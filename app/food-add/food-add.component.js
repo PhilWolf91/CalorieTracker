@@ -33,6 +33,9 @@ System.register(['angular2/core', '../classes/food.class', '../classes/macros.cl
                     this.macros = new macros_class_1.Macros();
                     console.log("Food Add Component - Meal Day Meal Id - " + this.mealDayMealId);
                 }
+                FoodAddComponent.prototype.ngOnInit = function () {
+                    console.log(this.mealDayMealId);
+                };
                 FoodAddComponent.prototype.saveFood = function () {
                     var food = new food_class_1.Food();
                     food.foodName = this.foodName;
@@ -51,7 +54,7 @@ System.register(['angular2/core', '../classes/food.class', '../classes/macros.cl
                     core_1.Component({
                         selector: 'ctw-food-add',
                         templateUrl: 'app/food-add/food-add.component.html',
-                        inputs: ['mealId']
+                        inputs: ['mealDayMealId']
                     }), 
                     __metadata('design:paramtypes', [localStorage_service_1.LocalStorageService])
                 ], FoodAddComponent);
