@@ -46,7 +46,32 @@ export class LocalStorageService{
         
     }
     
-    
+    SaveMealForAMealDay(meal: Meal, mealDayId: number): boolean{
+        
+        var mealSavedSuccessfully: boolean = true;
+        
+        try{
+        
+            var key = this.mealDayMealsKey + ":" + mealDayId;
+            var mealsForAMealDayInStorage = this.GetKey(key);
+            var mealsForAMealDay: Array<Meal> = new Array<Meal>();
+            
+            if(mealsForAMealDayInStorage)
+            {
+                mealsForAMealDay = JSON.parse(mealsForAMealDayInStorage);
+            }
+            
+            mealsForAMealDay.push(meal);
+            
+        }
+        catch(exception){
+            console.log(exception);
+            mealSavedSuccessfully = false;
+        }
+        
+        
+        return mealSavedSuccessfully;
+    }
     
     
     //MealDays
@@ -78,8 +103,13 @@ export class LocalStorageService{
     
     SaveFoodForAMeal(food:Food, mealId: number):boolean {
         try{
-            var serializedFoods = this.GetKey(this.foodsKey);
+            
             var foods: Array<Food> = null;
+            var key = this.foodsKey + ":" + mealId;
+            var serializedFoods = this.GetKey(key);
+            
+            console.log("SaveFoodForAMeal - Key used: " + key);
+
             if(serializedFoods){
                 foods = JSON.parse(serializedFoods);
             }
@@ -95,7 +125,7 @@ export class LocalStorageService{
             
             foods.push(food);
             console.log(foods);
-            this.SetKey(this.foodsKey, JSON.stringify(foods));
+            this.SetKey(key, JSON.stringify(foods));
             
             return true;    
         }
@@ -103,6 +133,18 @@ export class LocalStorageService{
             return false;
         }
         
+    }
+    
+    GetFoodForAMeal(mealId: number): Array<Food>{
+        var food = new Array<Food>();
+        var key = this.foodsKey + ":" + mealId;
+        var foodInStorage = this.GetKey(key);
+        
+        if(foodInStorage){
+            food = JSON.parse(foodInStorage);
+        }
+        
+        return food;
     }
     
     SaveFoodPermanently(food: Food): void{

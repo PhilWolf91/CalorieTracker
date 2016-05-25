@@ -48,6 +48,23 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     }
                     return meals;
                 };
+                LocalStorageService.prototype.SaveMealForAMealDay = function (meal, mealDayId) {
+                    var mealSavedSuccessfully = true;
+                    try {
+                        var key = this.mealDayMealsKey + ":" + mealDayId;
+                        var mealsForAMealDayInStorage = this.GetKey(key);
+                        var mealsForAMealDay = new Array();
+                        if (mealsForAMealDayInStorage) {
+                            mealsForAMealDay = JSON.parse(mealsForAMealDayInStorage);
+                        }
+                        mealsForAMealDay.push(meal);
+                    }
+                    catch (exception) {
+                        console.log(exception);
+                        mealSavedSuccessfully = false;
+                    }
+                    return mealSavedSuccessfully;
+                };
                 //MealDays
                 LocalStorageService.prototype.SaveMealDay = function (mealDay) {
                     var serializedMealDays = this.GetKey(this.mealDaysKey);
@@ -68,8 +85,10 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                 //Food
                 LocalStorageService.prototype.SaveFoodForAMeal = function (food, mealId) {
                     try {
-                        var serializedFoods = this.GetKey(this.foodsKey);
                         var foods = null;
+                        var key = this.foodsKey + ":" + mealId;
+                        var serializedFoods = this.GetKey(key);
+                        console.log("SaveFoodForAMeal - Key used: " + key);
                         if (serializedFoods) {
                             foods = JSON.parse(serializedFoods);
                         }
@@ -82,12 +101,21 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         }
                         foods.push(food);
                         console.log(foods);
-                        this.SetKey(this.foodsKey, JSON.stringify(foods));
+                        this.SetKey(key, JSON.stringify(foods));
                         return true;
                     }
                     catch (exception) {
                         return false;
                     }
+                };
+                LocalStorageService.prototype.GetFoodForAMeal = function (mealId) {
+                    var food = new Array();
+                    var key = this.foodsKey + ":" + mealId;
+                    var foodInStorage = this.GetKey(key);
+                    if (foodInStorage) {
+                        food = JSON.parse(foodInStorage);
+                    }
+                    return food;
                 };
                 LocalStorageService.prototype.SaveFoodPermanently = function (food) {
                     var foodsFromStorage = this._localStorage.getItem('savedFoods');

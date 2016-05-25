@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../services/localStorage.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1;
+    var core_1, router_1, localStorage_service_1;
     var MealDayMealsComponent;
     return {
         setters:[
@@ -19,29 +19,29 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (localStorage_service_1_1) {
+                localStorage_service_1 = localStorage_service_1_1;
             }],
         execute: function() {
             MealDayMealsComponent = (function () {
-                function MealDayMealsComponent(_router, _routeParams) {
-                    var _this = this;
+                function MealDayMealsComponent(_router, _routeParams, _storage) {
                     this._router = _router;
                     this._routeParams = _routeParams;
+                    this._storage = _storage;
                     this.showNoMealsWarning = true;
+                    this.meals = new Array();
                     this.storage = window.localStorage;
-                    var currentMealDayId = this._routeParams.get('mealDayId');
-                    var mealDays = JSON.parse(this.storage.getItem('mealDays'));
-                    //Set the Current Meal Day for later use
-                    if (mealDays != undefined) {
-                        console.log(mealDays);
-                        mealDays.forEach(function (meal) {
-                            if (meal.mealDayId == Number.parseInt(currentMealDayId)) {
-                                _this.currentMealDay = meal;
-                            }
-                        });
-                    }
+                    this.mealDayId = Number.parseInt(this._routeParams.get('mealDayId'));
                 }
+                MealDayMealsComponent.prototype.ngOnInit = function () {
+                    console.log("MealDayMeals Component- mealDayId: " + this.mealDayId);
+                    this.meals = this._storage.GetMealsForAMealDayId(this.mealDayId);
+                    console.log("MealDayMeals meals");
+                    console.log(this.meals);
+                };
                 MealDayMealsComponent.prototype.addNewMeal = function () {
-                    this._router.navigate(['MealAdd']);
+                    this._router.navigate(['MealAdd', { mealDayId: this.mealDayId }]);
                 };
                 MealDayMealsComponent = __decorate([
                     core_1.Component({
@@ -49,7 +49,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                         templateUrl: 'app/meal-day-meals/meal-day-meals.component.html',
                         inputs: ['mealDayId']
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams])
+                    __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams, localStorage_service_1.LocalStorageService])
                 ], MealDayMealsComponent);
                 return MealDayMealsComponent;
             }());

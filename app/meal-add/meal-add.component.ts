@@ -1,13 +1,16 @@
 import { Component, OnInit } from 'angular2/core'
 import { Router, RouteParams } from 'angular2/router'
 import { FoodListComponent } from '../food-list/food-list.component'
-import { Food } from '../classes/food.class'
 import { LocalStorageService } from '../services/localStorage.service'
+import { Food } from '../classes/food.class'
+import { Meal } from '../classes/meal.class'
+
+
 @Component({
     selector: 'ctw-meal-add',
     templateUrl: 'app/meal-add/meal-add.component.html',
     directives:[FoodListComponent],
-    providers: [LocalStorageService]
+    providers: [LocalStorageService],
 })
 
 export class MealAddComponent{
@@ -21,13 +24,12 @@ export class MealAddComponent{
     foods: Array<Food>;             //Foods in this meal
     
     constructor(private _router: Router, private _routeParams: RouteParams,
-                private _storage: LocalStorageService){   
-       
-       this.mealDayId = Number.parseInt(_routeParams.get('mealDayId'));
-    }
+                private _storage: LocalStorageService){}
     
     ngOnInit(){
        this.setCurrentMealDayMealId();
+       this.mealDayId = Number.parseInt(this._routeParams.get('mealDayId'));
+       console.log("Meal-Add Component- MealDayId: " + this.mealDayId);
         console.log("Current MealDayMealId: " + this.mealDayMealId);
     }
     
@@ -41,7 +43,10 @@ export class MealAddComponent{
        }        
     }
     
-    addMeal(){
+    saveMeal(){
+        var currentMeal: Meal = new Meal();
+        currentMeal.mealName = this.mealName;
+        this._storage.SaveMealForAMealDay(currentMeal, this.mealDayId);
         this._router.navigate(['MealDayMeals', { mealDayId: this.mealDayId}]);
     }
     

@@ -59,7 +59,7 @@ System.register(['angular2/core', '../classes/mealDay.class', 'angular2/router']
                 MealDayAddComponent = __decorate([
                     core_1.Component({
                         selector: 'ctw-meal-day',
-                        templateUrl: 'app/meal-day-add/meal-day-add.component.html'
+                        templateUrl: 'app/meal-day-add/meal-day-add.component.html',
                     }), 
                     __metadata('design:paramtypes', [router_1.Router])
                 ], MealDayAddComponent);

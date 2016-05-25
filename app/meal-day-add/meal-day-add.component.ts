@@ -1,11 +1,12 @@
-import { Component } from 'angular2/core'
+import { Component} from 'angular2/core'
 import { MealDay } from '../classes/mealDay.class'
 import { Router } from 'angular2/router'
 
 
+
 @Component({
     selector: 'ctw-meal-day',
-    templateUrl: 'app/meal-day-add/meal-day-add.component.html'
+    templateUrl: 'app/meal-day-add/meal-day-add.component.html',
 })
 
 export class MealDayAddComponent{

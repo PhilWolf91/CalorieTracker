@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../food-list/food-list.component', '../services/localStorage.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../food-list/food-list.component', '../services/localStorage.service', '../classes/meal.class'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', '../food-list/food-list.com
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, food_list_component_1, localStorage_service_1;
+    var core_1, router_1, food_list_component_1, localStorage_service_1, meal_class_1;
     var MealAddComponent;
     return {
         setters:[
@@ -25,6 +25,9 @@ System.register(['angular2/core', 'angular2/router', '../food-list/food-list.com
             },
             function (localStorage_service_1_1) {
                 localStorage_service_1 = localStorage_service_1_1;
+            },
+            function (meal_class_1_1) {
+                meal_class_1 = meal_class_1_1;
             }],
         execute: function() {
             MealAddComponent = (function () {
@@ -34,10 +37,11 @@ System.register(['angular2/core', 'angular2/router', '../food-list/food-list.com
                     this._storage = _storage;
                     this.showNoFoodsWarning = true;
                     this.showAddFoodPane = false;
-                    this.mealDayId = Number.parseInt(_routeParams.get('mealDayId'));
                 }
                 MealAddComponent.prototype.ngOnInit = function () {
                     this.setCurrentMealDayMealId();
+                    this.mealDayId = Number.parseInt(this._routeParams.get('mealDayId'));
+                    console.log("Meal-Add Component- MealDayId: " + this.mealDayId);
                     console.log("Current MealDayMealId: " + this.mealDayMealId);
                 };
                 MealAddComponent.prototype.setCurrentMealDayMealId = function () {
@@ -49,7 +53,10 @@ System.register(['angular2/core', 'angular2/router', '../food-list/food-list.com
                         this.mealDayMealId = 1;
                     }
                 };
-                MealAddComponent.prototype.addMeal = function () {
+                MealAddComponent.prototype.saveMeal = function () {
+                    var currentMeal = new meal_class_1.Meal();
+                    currentMeal.mealName = this.mealName;
+                    this._storage.SaveMealForAMealDay(currentMeal, this.mealDayId);
                     this._router.navigate(['MealDayMeals', { mealDayId: this.mealDayId }]);
                 };
                 MealAddComponent.prototype.toggleAddFoodPane = function () {
@@ -60,7 +67,7 @@ System.register(['angular2/core', 'angular2/router', '../food-list/food-list.com
                         selector: 'ctw-meal-add',
                         templateUrl: 'app/meal-add/meal-add.component.html',
                         directives: [food_list_component_1.FoodListComponent],
-                        providers: [localStorage_service_1.LocalStorageService]
+                        providers: [localStorage_service_1.LocalStorageService],
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams, localStorage_service_1.LocalStorageService])
                 ], MealAddComponent);
