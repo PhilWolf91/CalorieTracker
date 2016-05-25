@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from 'angular2/core'
 import { Router, RouteParams } from 'angular2/router'
 import { MealDay } from '../classes/mealDay.class'
-import { Meal } from '../classes/meal.class'
+import { MealDayMeal } from '../classes/mealDayMeals.class'
 import { LocalStorageService } from '../services/localStorage.service'
 
 @Component({
@@ -16,7 +16,7 @@ export class MealDayMealsComponent{
     currentMealDay: MealDay;
     showNoMealsWarning: boolean = true;
     storage: any;
-    meals: Array<Meal> = new Array<Meal>();
+    meals: Array<MealDayMeal> = new Array<MealDayMeal>();
     
     constructor(private _router: Router, private _routeParams: RouteParams, 
                 private _storage: LocalStorageService){
@@ -31,6 +31,9 @@ export class MealDayMealsComponent{
         this.meals = this._storage.GetMealsForAMealDayId(this.mealDayId);
         console.log("MealDayMeals meals");
         console.log(this.meals);
+        if(this.meals.length){
+            this.showNoMealsWarning = false;
+        }
     }
     
     addNewMeal(){

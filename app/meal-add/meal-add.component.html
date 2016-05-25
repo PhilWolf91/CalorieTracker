@@ -3,7 +3,7 @@
     <div class="panel-body">
         <div class="row">
             <div class="col-md-4">Meal Name</div>
-            <div class="col-md-4"><input type="text" ([ngModel])="mealDayName" /></div>
+            <div class="col-md-4"><input type="text" [(ngModel)]="mealName" /></div>
             <div class="col-md-4"><button (click)='saveMeal()' class="btn btn-block btn-primary">Save Meal</button></div>
         </div>
         <ctw-food-list [mealDayMealId]="mealDayMealId"></ctw-food-list>

@@ -2,11 +2,12 @@ import { Injectable } from 'angular2/core'
 import { MealDay } from '../classes/mealDay.class'
 import { Food } from '../classes/food.class'
 import { Meal } from '../classes/meal.class'
-import { MealDayMeals } from '../classes/mealDayMeals.class'
+import { MealDayMeal } from '../classes/mealDayMeals.class'
 
 @Injectable()
 export class LocalStorageService{
     _localStorage: any;
+    //stored as mealDayMeals:{mealDayId}
     mealDayMealsKey: string = 'mealDayMeals';
     mealDaysKey: string = 'mealDays';
     foodsKey: string = 'foods';
@@ -27,41 +28,39 @@ export class LocalStorageService{
     
     //Meals
     
-    public GetMealsForAMealDayId(mealDayId: number): Array<Meal>{
-        var meals = new Array<Meal>();
-        var mealDayMeals = new Array<MealDayMeals>();
-        var mealDayMealsInStorage = this._localStorage.getItem(this.mealDayMealsKey);
+    public GetMealsForAMealDayId(mealDayId: number): Array<MealDayMeal>{
+        var mealDayMeals = new Array<MealDayMeal>();
+        var key = this.mealDayMealsKey + ":" + mealDayId;
+        console.log("Key Used to Retrieve Meals: {mealDayMealsKey}:{mealDayId} " + key);
+        var mealDayMealsInStorage = this._localStorage.getItem(key);
         
         if(mealDayMealsInStorage){
             mealDayMeals = JSON.parse(mealDayMealsInStorage);
-            
-            mealDayMeals.forEach(mealDayMeal => {
-                if(mealDayMeal.mealDayId == mealDayId){
-                    return mealDayMeal.meals;
-                }
-            });
         }
-        
-        return meals;    
-        
+        return mealDayMeals;
     }
     
-    SaveMealForAMealDay(meal: Meal, mealDayId: number): boolean{
+    SaveMealForAMealDay(meal: MealDayMeal, mealDayId: number): boolean{
         
         var mealSavedSuccessfully: boolean = true;
         
         try{
         
             var key = this.mealDayMealsKey + ":" + mealDayId;
+            console.log("Key Used to Store Meals: {mealsKey}:{mealDayId} " + key);
             var mealsForAMealDayInStorage = this.GetKey(key);
-            var mealsForAMealDay: Array<Meal> = new Array<Meal>();
+            var mealsForAMealDay: Array<MealDayMeal> = new Array<MealDayMeal>();
             
             if(mealsForAMealDayInStorage)
             {
                 mealsForAMealDay = JSON.parse(mealsForAMealDayInStorage);
             }
-            
+            meal.mealId = mealsForAMealDay.length + 1;
             mealsForAMealDay.push(meal);
+            
+            this.SetKey(key, JSON.stringify(mealsForAMealDay));
+            console.log("Meal Stored:")
+            console.log(meal);
             
         }
         catch(exception){

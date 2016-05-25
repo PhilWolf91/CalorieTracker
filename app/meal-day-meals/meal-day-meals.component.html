@@ -4,21 +4,23 @@
         <div *ngFor='#meal of meals' [hidden]='showNoMealsWarning'>
             <div class="row">
                 <div class="col-md-4">
-                    <label>Name: </label> <span>{{mealName}}</span>
+                    <label>Name: </label> <span>{{meal.mealName}}</span>
                 </div>
             </div>
-            <div>
-                <div class="col-md-4">
-                    <span>Calories: </span>
-                </div>
-                <div class="col-md-4">
-                    <span>Protein: </span>
-                </div>
-                <div class="col-md-4">
-                    <span>Carbohydrates: </span>
-                </div>
-                <div class="col-md-4">
-                    <span>Fats: </span>
+            <div class="row">
+                <div>
+                    <div class="col-md-4">
+                        <span>Calories: </span>
+                    </div>
+                    <div class="col-md-4">
+                        <span>Protein: </span>
+                    </div>
+                    <div class="col-md-4">
+                        <span>Carbohydrates: </span>
+                    </div>
+                    <div class="col-md-4">
+                        <span>Fats: </span>
+                    </div>
                 </div>
             </div>
         </div>

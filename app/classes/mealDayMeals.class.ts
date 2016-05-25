@@ -1,6 +1,5 @@
-import { Meal } from './meal.class'
-export class MealDayMeals{
+export class MealDayMeal{
     mealId: number;
     mealDayId: number;
-    meals: Array<Meal>;
+    mealName: string;
 }

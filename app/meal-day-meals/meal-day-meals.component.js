@@ -39,6 +39,9 @@ System.register(['angular2/core', 'angular2/router', '../services/localStorage.s
                     this.meals = this._storage.GetMealsForAMealDayId(this.mealDayId);
                     console.log("MealDayMeals meals");
                     console.log(this.meals);
+                    if (this.meals.length) {
+                        this.showNoMealsWarning = false;
+                    }
                 };
                 MealDayMealsComponent.prototype.addNewMeal = function () {
                     this._router.navigate(['MealAdd', { mealDayId: this.mealDayId }]);

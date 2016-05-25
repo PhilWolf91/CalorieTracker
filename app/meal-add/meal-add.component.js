@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../food-list/food-list.component', '../services/localStorage.service', '../classes/meal.class'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../food-list/food-list.component', '../services/localStorage.service', '../classes/mealDayMeals.class'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', '../food-list/food-list.com
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, food_list_component_1, localStorage_service_1, meal_class_1;
+    var core_1, router_1, food_list_component_1, localStorage_service_1, mealDayMeals_class_1;
     var MealAddComponent;
     return {
         setters:[
@@ -26,8 +26,8 @@ System.register(['angular2/core', 'angular2/router', '../food-list/food-list.com
             function (localStorage_service_1_1) {
                 localStorage_service_1 = localStorage_service_1_1;
             },
-            function (meal_class_1_1) {
-                meal_class_1 = meal_class_1_1;
+            function (mealDayMeals_class_1_1) {
+                mealDayMeals_class_1 = mealDayMeals_class_1_1;
             }],
         execute: function() {
             MealAddComponent = (function () {
@@ -54,10 +54,17 @@ System.register(['angular2/core', 'angular2/router', '../food-list/food-list.com
                     }
                 };
                 MealAddComponent.prototype.saveMeal = function () {
-                    var currentMeal = new meal_class_1.Meal();
+                    var currentMeal = new mealDayMeals_class_1.MealDayMeal();
                     currentMeal.mealName = this.mealName;
-                    this._storage.SaveMealForAMealDay(currentMeal, this.mealDayId);
-                    this._router.navigate(['MealDayMeals', { mealDayId: this.mealDayId }]);
+                    currentMeal.mealDayId = this.mealDayId;
+                    currentMeal.mealId = 0;
+                    var mealSuccessfullySaved = this._storage.SaveMealForAMealDay(currentMeal, this.mealDayId);
+                    if (mealSuccessfullySaved) {
+                        this._router.navigate(['MealDayMeals', { mealDayId: this.mealDayId }]);
+                    }
+                    else {
+                        alert("Meal Not Saved");
+                    }
                 };
                 MealAddComponent.prototype.toggleAddFoodPane = function () {
                     this.showAddFoodPane = false ? true : false;

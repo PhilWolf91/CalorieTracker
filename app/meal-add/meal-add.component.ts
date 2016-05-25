@@ -3,7 +3,7 @@ import { Router, RouteParams } from 'angular2/router'
 import { FoodListComponent } from '../food-list/food-list.component'
 import { LocalStorageService } from '../services/localStorage.service'
 import { Food } from '../classes/food.class'
-import { Meal } from '../classes/meal.class'
+import { MealDayMeal } from '../classes/mealDayMeals.class'
 
 
 @Component({
@@ -44,10 +44,17 @@ export class MealAddComponent{
     }
     
     saveMeal(){
-        var currentMeal: Meal = new Meal();
+        var currentMeal: MealDayMeal = new MealDayMeal();
         currentMeal.mealName = this.mealName;
-        this._storage.SaveMealForAMealDay(currentMeal, this.mealDayId);
-        this._router.navigate(['MealDayMeals', { mealDayId: this.mealDayId}]);
+        currentMeal.mealDayId = this.mealDayId;
+        currentMeal.mealId = 0;
+        var mealSuccessfullySaved: boolean = this._storage.SaveMealForAMealDay(currentMeal, this.mealDayId);
+        if(mealSuccessfullySaved){
+            this._router.navigate(['MealDayMeals', { mealDayId: this.mealDayId}]);    
+        }
+        else{
+            alert("Meal Not Saved");
+        }
     }
     
     toggleAddFoodPane(){
