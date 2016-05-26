@@ -56,6 +56,7 @@ export class LocalStorageService{
                 mealsForAMealDay = JSON.parse(mealsForAMealDayInStorage);
             }
             meal.mealId = mealsForAMealDay.length + 1;
+            // meal.mealDayId = mealDayId;
             mealsForAMealDay.push(meal);
             
             this.SetKey(key, JSON.stringify(mealsForAMealDay));
@@ -117,10 +118,7 @@ export class LocalStorageService{
             }
             
             food.foodId = foods.length + 1;
-            
-            if(!food.mealId){
-                food.mealId = mealId;    
-            }
+            food.mealId = mealId;    
             
             foods.push(food);
             console.log(foods);

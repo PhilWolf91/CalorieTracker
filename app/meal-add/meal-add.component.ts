@@ -27,8 +27,8 @@ export class MealAddComponent{
                 private _storage: LocalStorageService){}
     
     ngOnInit(){
-       this.setCurrentMealDayMealId();
        this.mealDayId = Number.parseInt(this._routeParams.get('mealDayId'));
+       this.setCurrentMealDayMealId();
        console.log("Meal-Add Component- MealDayId: " + this.mealDayId);
         console.log("Current MealDayMealId: " + this.mealDayMealId);
     }

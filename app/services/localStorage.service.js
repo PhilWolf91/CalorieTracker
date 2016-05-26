@@ -56,6 +56,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                             mealsForAMealDay = JSON.parse(mealsForAMealDayInStorage);
                         }
                         meal.mealId = mealsForAMealDay.length + 1;
+                        // meal.mealDayId = mealDayId;
                         mealsForAMealDay.push(meal);
                         this.SetKey(key, JSON.stringify(mealsForAMealDay));
                         console.log("Meal Stored:");
@@ -98,9 +99,7 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                             foods = new Array();
                         }
                         food.foodId = foods.length + 1;
-                        if (!food.mealId) {
-                            food.mealId = mealId;
-                        }
+                        food.mealId = mealId;
                         foods.push(food);
                         console.log(foods);
                         this.SetKey(key, JSON.stringify(foods));

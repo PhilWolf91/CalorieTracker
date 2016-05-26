@@ -39,8 +39,8 @@ System.register(['angular2/core', 'angular2/router', '../food-list/food-list.com
                     this.showAddFoodPane = false;
                 }
                 MealAddComponent.prototype.ngOnInit = function () {
-                    this.setCurrentMealDayMealId();
                     this.mealDayId = Number.parseInt(this._routeParams.get('mealDayId'));
+                    this.setCurrentMealDayMealId();
                     console.log("Meal-Add Component- MealDayId: " + this.mealDayId);
                     console.log("Current MealDayMealId: " + this.mealDayMealId);
                 };
