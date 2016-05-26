@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../services/localStorage.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../classes/meal.class', '../services/localStorage.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', '../services/localStorage.s
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, localStorage_service_1;
+    var core_1, router_1, meal_class_1, localStorage_service_1;
     var MealDayMealsComponent;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(['angular2/core', 'angular2/router', '../services/localStorage.s
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (meal_class_1_1) {
+                meal_class_1 = meal_class_1_1;
             },
             function (localStorage_service_1_1) {
                 localStorage_service_1 = localStorage_service_1_1;
@@ -30,16 +33,30 @@ System.register(['angular2/core', 'angular2/router', '../services/localStorage.s
                     this._routeParams = _routeParams;
                     this._storage = _storage;
                     this.showNoMealsWarning = true;
+                    this.mealDayMeals = new Array();
                     this.meals = new Array();
                     this.storage = window.localStorage;
                     this.mealDayId = Number.parseInt(this._routeParams.get('mealDayId'));
                 }
                 MealDayMealsComponent.prototype.ngOnInit = function () {
+                    var _this = this;
                     console.log("MealDayMeals Component- mealDayId: " + this.mealDayId);
-                    this.meals = this._storage.GetMealsForAMealDayId(this.mealDayId);
+                    this.mealDayMeals = this._storage.GetMealsForAMealDayId(this.mealDayId);
+                    this.mealDayMeals.forEach(function (element) {
+                        try {
+                            var meal = new meal_class_1.Meal();
+                            var foods = _this._storage.GetFoodForAMeal(element.mealId);
+                            meal.mealName = element.mealName;
+                            meal.foods = foods;
+                            _this.meals.push(meal);
+                        }
+                        catch (exception) {
+                            console.log(exception);
+                        }
+                    });
                     console.log("MealDayMeals meals");
-                    console.log(this.meals);
-                    if (this.meals.length) {
+                    console.log(this.mealDayMeals);
+                    if (this.mealDayMeals.length) {
                         this.showNoMealsWarning = false;
                     }
                 };

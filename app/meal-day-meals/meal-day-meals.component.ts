@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from 'angular2/core'
 import { Router, RouteParams } from 'angular2/router'
+import { Meal } from '../classes/meal.class'
 import { MealDay } from '../classes/mealDay.class'
 import { MealDayMeal } from '../classes/mealDayMeals.class'
 import { LocalStorageService } from '../services/localStorage.service'
@@ -16,7 +17,8 @@ export class MealDayMealsComponent{
     currentMealDay: MealDay;
     showNoMealsWarning: boolean = true;
     storage: any;
-    meals: Array<MealDayMeal> = new Array<MealDayMeal>();
+    mealDayMeals: Array<MealDayMeal> = new Array<MealDayMeal>();
+    meals: Array<Meal> = new Array<Meal>();
     
     constructor(private _router: Router, private _routeParams: RouteParams, 
                 private _storage: LocalStorageService){
@@ -28,10 +30,23 @@ export class MealDayMealsComponent{
     
     ngOnInit(){
         console.log("MealDayMeals Component- mealDayId: " + this.mealDayId)
-        this.meals = this._storage.GetMealsForAMealDayId(this.mealDayId);
+        this.mealDayMeals = this._storage.GetMealsForAMealDayId(this.mealDayId);
+        this.mealDayMeals.forEach(element => {
+            try{
+                var meal: Meal = new Meal();
+                var foods = this._storage.GetFoodForAMeal(element.mealId);
+                meal.mealName = element.mealName;
+                meal.foods = foods;
+                this.meals.push(meal);    
+            }
+            catch(exception){
+                console.log(exception);
+            }
+            
+        });
         console.log("MealDayMeals meals");
-        console.log(this.meals);
-        if(this.meals.length){
+        console.log(this.mealDayMeals);
+        if(this.mealDayMeals.length){
             this.showNoMealsWarning = false;
         }
     }
