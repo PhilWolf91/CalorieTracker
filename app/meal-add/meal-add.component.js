@@ -75,6 +75,7 @@ System.register(['angular2/core', 'angular2/router', '../food-list/food-list.com
                         templateUrl: 'app/meal-add/meal-add.component.html',
                         directives: [food_list_component_1.FoodListComponent],
                         providers: [localStorage_service_1.LocalStorageService],
+                        inputs: ['mealDayId']
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, router_1.RouteParams, localStorage_service_1.LocalStorageService])
                 ], MealAddComponent);

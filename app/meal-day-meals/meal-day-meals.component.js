@@ -42,10 +42,14 @@ System.register(['angular2/core', 'angular2/router', '../classes/meal.class', '.
                     var _this = this;
                     console.log("MealDayMeals Component- mealDayId: " + this.mealDayId);
                     this.mealDayMeals = this._storage.GetMealsForAMealDayId(this.mealDayId);
+                    console.log("Meal Day Meals: ");
+                    console.log(this.mealDayMeals);
                     this.mealDayMeals.forEach(function (element) {
                         try {
                             var meal = new meal_class_1.Meal();
-                            var foods = _this._storage.GetFoodForAMeal(element.mealId);
+                            var foods = _this._storage.GetFoodForAMeal(element.mealId, element.mealDayId);
+                            console.log("Meal Name: " + element.mealName + ", foods:");
+                            console.log(foods);
                             meal.mealName = element.mealName;
                             meal.foods = foods;
                             _this.meals.push(meal);

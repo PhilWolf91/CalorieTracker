@@ -86,10 +86,10 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     return mealDays;
                 };
                 //Food
-                LocalStorageService.prototype.SaveFoodForAMeal = function (food, mealId) {
+                LocalStorageService.prototype.SaveFoodForAMeal = function (food, mealId, mealDayId) {
                     try {
                         var foods = null;
-                        var key = this.foodsKey + ":" + mealId;
+                        var key = this.foodsKey + ":" + mealId + ":" + mealDayId;
                         var serializedFoods = this.GetKey(key);
                         console.log("SaveFoodForAMeal - Key used: " + key);
                         if (serializedFoods) {
@@ -100,7 +100,9 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         }
                         food.foodId = foods.length + 1;
                         food.mealId = mealId;
+                        food.mealDayId = mealDayId;
                         foods.push(food);
+                        console.log("Food was saved into the following array with the key " + key + ": ");
                         console.log(foods);
                         this.SetKey(key, JSON.stringify(foods));
                         return true;
@@ -109,9 +111,9 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         return false;
                     }
                 };
-                LocalStorageService.prototype.GetFoodForAMeal = function (mealId) {
+                LocalStorageService.prototype.GetFoodForAMeal = function (mealId, mealDayId) {
                     var food = new Array();
-                    var key = this.foodsKey + ":" + mealId;
+                    var key = this.foodsKey + ":" + mealId + ":" + mealDayId;
                     var foodInStorage = this.GetKey(key);
                     if (foodInStorage) {
                         food = JSON.parse(foodInStorage);

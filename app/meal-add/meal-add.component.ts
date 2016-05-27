@@ -1,4 +1,4 @@
-import { Component, OnInit } from 'angular2/core'
+import { Component, OnInit, Input } from 'angular2/core'
 import { Router, RouteParams } from 'angular2/router'
 import { FoodListComponent } from '../food-list/food-list.component'
 import { LocalStorageService } from '../services/localStorage.service'
@@ -11,10 +11,10 @@ import { MealDayMeal } from '../classes/mealDayMeals.class'
     templateUrl: 'app/meal-add/meal-add.component.html',
     directives:[FoodListComponent],
     providers: [LocalStorageService],
+    inputs: ['mealDayId']
 })
 
 export class MealAddComponent{
-    
     
     mealDayMealId: number;          //ID of the meal being added
     mealDayId: number;              //ID of the day meal is being added to

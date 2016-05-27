@@ -10,7 +10,7 @@ import { MealDay } from '../classes/mealDay.class'
     selector: 'ctw-food-list',
     templateUrl: 'app/food-list/food-list.component.html',
     directives: [ROUTER_DIRECTIVES, FoodAddComponent],
-    inputs: ['mealDayMealId']
+    inputs: ['mealDayMealId', 'mealDayId']
 })
 
 export class FoodListComponent {
@@ -18,18 +18,18 @@ export class FoodListComponent {
     mealDays: Array<MealDay>;
     currentMealDay: MealDay;
     mealDayMealId: number;
+    mealDayId: number;
     foods: Array<Food> = new Array<Food>();
     showNoFoodWarning: boolean = true;
     showAddFoodPanel: boolean = false;
     
     constructor(private _localStorageSvc: LocalStorageService){
         this.mealDays = _localStorageSvc.GetMealDays();
-        console.log("Food List Component - Meal Day Meal Id: " + this.mealDayMealId);
-        console.log(this.mealDays);
     }
     
     ngOnInit(){
         console.log("Food List Component:OnInit - Meal Day Meal Id: " + this.mealDayMealId);
+        console.log("Food List Component:OnInit - Meal Day Id: " + this.mealDayId)
     }
     
     toggleAddFoodPanel(){

@@ -31,10 +31,14 @@ export class MealDayMealsComponent{
     ngOnInit(){
         console.log("MealDayMeals Component- mealDayId: " + this.mealDayId)
         this.mealDayMeals = this._storage.GetMealsForAMealDayId(this.mealDayId);
+        console.log("Meal Day Meals: ");
+        console.log(this.mealDayMeals);
         this.mealDayMeals.forEach(element => {
             try{
                 var meal: Meal = new Meal();
-                var foods = this._storage.GetFoodForAMeal(element.mealId);
+                var foods = this._storage.GetFoodForAMeal(element.mealId, element.mealDayId);
+                console.log("Meal Name: " + element.mealName + ", foods:");
+                console.log(foods);
                 meal.mealName = element.mealName;
                 meal.foods = foods;
                 this.meals.push(meal);    

@@ -7,7 +7,7 @@ import { LocalStorageService } from '../services/localStorage.service'
 @Component({
     selector: 'ctw-food-add',
     templateUrl: 'app/food-add/food-add.component.html',
-    inputs: ['mealDayMealId'],
+    inputs: ['mealDayMealId', 'mealDayId'],
     outputs: ['foodWasAdded']
 })
 
@@ -18,6 +18,7 @@ export class FoodAddComponent{
     foodName: string;
     macros: Macros;
     mealDayMealId: number;
+    mealDayId: number;
     
     constructor(private _localStorageSvc: LocalStorageService){
         this.macros = new Macros();
@@ -28,7 +29,7 @@ export class FoodAddComponent{
     }
     
     saveFood(){
-        var foodSaved: boolean = this._localStorageSvc.SaveFoodForAMeal(this.foodToAdd, this.mealDayMealId)
+        var foodSaved: boolean = this._localStorageSvc.SaveFoodForAMeal(this.foodToAdd, this.mealDayMealId, this.mealDayId)
         if(foodSaved){
             
         }

@@ -34,11 +34,10 @@ System.register(['../food-add/food-add.component', 'angular2/core', 'angular2/ro
                     this.showNoFoodWarning = true;
                     this.showAddFoodPanel = false;
                     this.mealDays = _localStorageSvc.GetMealDays();
-                    console.log("Food List Component - Meal Day Meal Id: " + this.mealDayMealId);
-                    console.log(this.mealDays);
                 }
                 FoodListComponent.prototype.ngOnInit = function () {
                     console.log("Food List Component:OnInit - Meal Day Meal Id: " + this.mealDayMealId);
+                    console.log("Food List Component:OnInit - Meal Day Id: " + this.mealDayId);
                 };
                 FoodListComponent.prototype.toggleAddFoodPanel = function () {
                     if (this.showAddFoodPanel) {
@@ -60,7 +59,7 @@ System.register(['../food-add/food-add.component', 'angular2/core', 'angular2/ro
                         selector: 'ctw-food-list',
                         templateUrl: 'app/food-list/food-list.component.html',
                         directives: [router_1.ROUTER_DIRECTIVES, food_add_component_1.FoodAddComponent],
-                        inputs: ['mealDayMealId']
+                        inputs: ['mealDayMealId', 'mealDayId']
                     }), 
                     __metadata('design:paramtypes', [localStorage_service_1.LocalStorageService])
                 ], FoodListComponent);

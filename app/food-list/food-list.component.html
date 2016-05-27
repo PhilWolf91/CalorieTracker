@@ -33,5 +33,5 @@
     </div>
 </div>
 <div [hidden]='!showAddFoodPanel'>
-    <ctw-food-add [mealDayMealId]='mealDayMealId' (foodWasAdded)='onFoodAdded($event)'></ctw-food-add>
+    <ctw-food-add [mealDayMealId]='mealDayMealId' [mealDayId]='mealDayId' (foodWasAdded)='onFoodAdded($event)'></ctw-food-add>
 </div>

@@ -6,6 +6,7 @@ export class Food{
     }
     foodId: number;
     mealId: number;
+    mealDayId: number;
     foodName: string;
     macros: Macros;
 }

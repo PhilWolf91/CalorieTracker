@@ -101,11 +101,11 @@ export class LocalStorageService{
     
     //Food
     
-    SaveFoodForAMeal(food:Food, mealId: number):boolean {
+    SaveFoodForAMeal(food:Food, mealId: number, mealDayId: number):boolean {
         try{
             
             var foods: Array<Food> = null;
-            var key = this.foodsKey + ":" + mealId;
+            var key = this.foodsKey + ":" + mealId + ":" + mealDayId;
             var serializedFoods = this.GetKey(key);
             
             console.log("SaveFoodForAMeal - Key used: " + key);
@@ -119,8 +119,10 @@ export class LocalStorageService{
             
             food.foodId = foods.length + 1;
             food.mealId = mealId;    
+            food.mealDayId = mealDayId;
             
             foods.push(food);
+            console.log("Food was saved into the following array with the key " + key + ": ");
             console.log(foods);
             this.SetKey(key, JSON.stringify(foods));
             
@@ -132,9 +134,9 @@ export class LocalStorageService{
         
     }
     
-    GetFoodForAMeal(mealId: number): Array<Food>{
+    GetFoodForAMeal(mealId: number, mealDayId: number): Array<Food>{
         var food = new Array<Food>();
-        var key = this.foodsKey + ":" + mealId;
+        var key = this.foodsKey + ":" + mealId + ":" + mealDayId;
         var foodInStorage = this.GetKey(key);
         
         if(foodInStorage){
