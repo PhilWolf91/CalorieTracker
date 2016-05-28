@@ -15,7 +15,7 @@
 }
 
 #wrapper.toggled {
-    padding-left: 250px;
+    padding-left: 150px;
 }
 
 #sidebar-wrapper {
@@ -34,7 +34,7 @@
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 250px;
+    width: 150px;
 }
 
 #page-content-wrapper {
@@ -45,7 +45,7 @@
 
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
-    margin-right: -250px;
+    margin-right: -260px;
 }
 
 /* Sidebar Styles */
@@ -95,26 +95,27 @@
     color: #fff;
     background: none;
 }
-
+/* This section will be used when the screen width is higher than 768px */
 @media(min-width:768px) {
+    /*This changes how much space is actually given from the left side of the screen */
     #wrapper {
-        padding-left: 250px;
+        padding-left: 150px;
     }
 
     #wrapper.toggled {
         padding-left: 0;
     }
-
+    /* This is how big the sidebar actually is */
     #sidebar-wrapper {
-        width: 250px;
+        width: 150px;
     }
-
+    /* this is how big the bar is when toggled */
     #wrapper.toggled #sidebar-wrapper {
-        width: 20px;
+        width: 40px;
     }
 
     #page-content-wrapper {
-        padding: 20px;
+        padding: 40px;
         position: relative;
     }
 
