@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../services/localStorage.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1;
+    var core_1, router_1, localStorage_service_1;
     var MealDaysListComponent;
     return {
         setters:[
@@ -19,12 +19,16 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (localStorage_service_1_1) {
+                localStorage_service_1 = localStorage_service_1_1;
             }],
         execute: function() {
             MealDaysListComponent = (function () {
-                function MealDaysListComponent(_router) {
+                function MealDaysListComponent(_router, _storage) {
                     var _this = this;
                     this._router = _router;
+                    this._storage = _storage;
                     this.showNoMealDaysWarning = true;
                     this.mealDays = new Array();
                     this.storage = window.localStorage;
@@ -52,7 +56,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                     core_1.Component({
                         templateUrl: 'app/meal-days-list/meal-days-list.component.html'
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router])
+                    __metadata('design:paramtypes', [router_1.Router, localStorage_service_1.LocalStorageService])
                 ], MealDaysListComponent);
                 return MealDaysListComponent;
             }());

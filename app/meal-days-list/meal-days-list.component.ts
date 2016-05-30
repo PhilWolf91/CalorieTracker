@@ -1,6 +1,7 @@
 import { Component } from 'angular2/core'
 import { Router } from 'angular2/router'
 import { MealDay } from '../classes/mealDay.class'
+import { LocalStorageService } from '../services/localStorage.service'
 
 @Component({
     templateUrl: 'app/meal-days-list/meal-days-list.component.html'
@@ -10,7 +11,7 @@ export class MealDaysListComponent {
     storage: any;
     mealDays: Array<MealDay>;
     showNoMealDaysWarning: boolean = true;
-    constructor(private _router: Router){
+    constructor(private _router: Router, private _storage: LocalStorageService){
         this.mealDays = new Array<MealDay>();
         this.storage = window.localStorage;
         
