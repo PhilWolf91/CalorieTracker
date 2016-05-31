@@ -27,6 +27,9 @@ import { LocalStorageService } from './services/localStorage.service'
 ])
 
 export class AppComponent {
+    foodIconSrc: string = 'app/icons/food-blue.png'
+    calendarIconSrc: string = 'app/icons/calendar-blue.png'
+    
     toggleMenu(): void{
         $("#wrapper").toggleClass("toggled");
     }

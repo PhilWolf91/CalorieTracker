@@ -22,7 +22,7 @@
     z-index: 1000;
     position: fixed;
     left: 250px;
-    width: 20px;
+    width: 40px;
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
@@ -36,6 +36,25 @@
 #wrapper.toggled #sidebar-wrapper {
     width: 150px;
 }
+
+    /* HIDE content of #toggledView when not toggled */
+    #toggledView {
+        display: block;
+    }
+    
+    /* SHOW conttent of #unToggledView when not toggled */
+    #unToggledView {
+        display: none;
+    }
+    /* SHOW content of #toggledView when toggled */
+    #wrapper.toggled #toggledView {
+        display: none;
+    }
+    
+    /* HIDE content of #unToggledView when toggled */
+    #wrapper.toggled #unToggledView {
+        display: block;
+    }
 
 #page-content-wrapper {
     width: 100%;
@@ -105,15 +124,35 @@
     #wrapper.toggled {
         padding-left: 0;
     }
-    /* This is how big the sidebar actually is */
+    /* This is how big the sidebar actually is when NOT toggled*/
     #sidebar-wrapper {
         width: 150px;
     }
     /* this is how big the bar is when toggled */
     #wrapper.toggled #sidebar-wrapper {
-        width: 40px;
+        width: 50px;
     }
-
+    
+    /* HIDE content of #toggledView when not toggled */
+    #toggledView {
+        display: none;
+    }
+    
+    /* SHOW conttent of #unToggledView when not toggled */
+    #unToggledView {
+        display: block;
+    }
+    /* SHOW content of #toggledView when toggled */
+    #wrapper.toggled #toggledView {
+        display: block;
+    }
+    
+    /* HIDE content of #unToggledView when toggled */
+    #wrapper.toggled #unToggledView {
+        display: hidden;
+    }
+    
+    #wrapper
     #page-content-wrapper {
         padding: 40px;
         position: relative;
