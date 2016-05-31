@@ -22,7 +22,7 @@
     z-index: 1000;
     position: fixed;
     left: 250px;
-    width: 40px;
+    width: 50px;
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
@@ -60,6 +60,7 @@
     width: 100%;
     position: absolute;
     padding: 15px;
+    padding-left:30px
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -79,7 +80,7 @@
 }
 
 .sidebar-nav li {
-    text-indent: 20px;
+    text-indent: 5px;
     line-height: 40px;
 }
 
