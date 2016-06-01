@@ -41,6 +41,8 @@ System.register(['angular2/core', 'angular2/router', './home/home.component', '.
         execute: function() {
             AppComponent = (function () {
                 function AppComponent() {
+                    this.foodIconSrc = 'app/icons/food-blue.png';
+                    this.calendarIconSrc = 'app/icons/calendar-blue.png';
                 }
                 AppComponent.prototype.toggleMenu = function () {
                     $("#wrapper").toggleClass("toggled");
