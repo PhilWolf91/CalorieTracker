@@ -45,5 +45,7 @@ export class MealDayAddComponent{
             mealDays.push(this.mealDayToAdd);
             this.storage.setItem('mealDays', JSON.stringify(mealDays));    
         }
+        
+        this._router.navigate(["MealDaysList"]);
     }
 }

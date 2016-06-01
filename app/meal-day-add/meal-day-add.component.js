@@ -55,6 +55,7 @@ System.register(['angular2/core', '../classes/mealDay.class', 'angular2/router']
                         mealDays.push(this.mealDayToAdd);
                         this.storage.setItem('mealDays', JSON.stringify(mealDays));
                     }
+                    this._router.navigate(["MealDaysList"]);
                 };
                 MealDayAddComponent = __decorate([
                     core_1.Component({
