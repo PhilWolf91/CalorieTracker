@@ -28,10 +28,14 @@
                     <span (click)="toggleMenu()" class="glyphicon glyphicon-menu-hamburger" style="font-size:30px;color:white"></span>
                 </li>
                 <li>
-                    <span class="glyphicon glyphicon-home" style="font-size:30px;color:white"></span>
+                    <a [routerLink]="['Home']">
+                        <span class="glyphicon glyphicon-home" style="font-size:30px;color:white"></span>
+                    </a>
                 </li>
                 <li>
-                    <span class="glyphicon glyphicon-calendar" style="font-size:30px;color:white"></span>
+                    <a [routerLink]="['MealDaysList']">
+                        <span class="glyphicon glyphicon-calendar" style="font-size:30px;color:white"></span>
+                    </a>
                 </li>
                 <li>
                     <span class="glyphicon glyphicon-cutlery" style="font-size:30px;color:white"></span>
