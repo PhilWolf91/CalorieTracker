@@ -21,10 +21,12 @@ export class MealDaysListComponent {
         this.storage = window.localStorage;
 
         var mealDays: Array<MealDay> = JSON.parse(this.storage.getItem('mealDays'));
-        mealDays.forEach(mealDay => {
-            mealDay.macrosConsumed = this.getTotalMacrosForAMealDay(mealDay.mealDayId);
-        })
-        console.log(mealDays);
+        if(mealDays){
+            mealDays.forEach(mealDay => {
+                mealDay.macrosConsumed = this.getTotalMacrosForAMealDay(mealDay.mealDayId);
+            })    
+        }
+        
         if(mealDays != undefined){
             mealDays.forEach(meal => {
                 this.mealDays.push(meal);
@@ -51,8 +53,6 @@ export class MealDaysListComponent {
         totalMacros.fat = 0;
         totalMacros.protein = 0;
         let mealDayMeals: Array<MealDayMeal> = this._storage.GetMealsForAMealDayId(mealDayId);
-        console.log("Meal Day Meals");
-        console.log(mealDayMeals);
         
         let foodsForAMealDay: Array<Food> = new Array<Food>();
         
@@ -68,10 +68,7 @@ export class MealDaysListComponent {
          }
          
          if(foodsForAMealDay.length > 0){
-             console.log("Foods for a meal day");
-             console.log(foodsForAMealDay);
              foodsForAMealDay.forEach(food => {
-                 console.log(food);
                  if(food.macros.calories){
                     totalMacros.calories += food.macros.calories;    
                  }
@@ -87,9 +84,7 @@ export class MealDaysListComponent {
                  
              })
          }
-         
-         console.log("These are the total macros for MealDayId: " + mealDayId);
-         console.log(totalMacros);
+
          return totalMacros;
     }
 }
