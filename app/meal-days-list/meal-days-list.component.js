@@ -36,7 +36,9 @@ System.register(['angular2/core', 'angular2/router', '../classes/macros.class', 
                     this.mealDays = new Array();
                     this.storage = window.localStorage;
                     var mealDays = JSON.parse(this.storage.getItem('mealDays'));
-                    this.getTotalMacrosForAMealDay(mealDays[0].mealDayId);
+                    mealDays.forEach(function (mealDay) {
+                        mealDay.macrosConsumed = _this.getTotalMacrosForAMealDay(mealDay.mealDayId);
+                    });
                     console.log(mealDays);
                     if (mealDays != undefined) {
                         mealDays.forEach(function (meal) {
@@ -61,42 +63,41 @@ System.register(['angular2/core', 'angular2/router', '../classes/macros.class', 
                     totalMacros.fat = 0;
                     totalMacros.protein = 0;
                     var mealDayMeals = this._storage.GetMealsForAMealDayId(mealDayId);
+                    console.log("Meal Day Meals");
+                    console.log(mealDayMeals);
                     var foodsForAMealDay = new Array();
                     if (mealDayMeals) {
                         mealDayMeals.forEach(function (mealDayMeal) {
                             var foodsForCurrentMealDayMeal = _this._storage.GetFoodForAMeal(mealDayMeal.mealId, mealDayMeal.mealDayId);
-                            if (mealDayMeals.length > 0) {
-                                var mealDayForEachCounter = 1;
-                                mealDayMeals.forEach(function (meal) {
-                                    console.log("mealDayMeals forEach: mealDayForEachCounter");
-                                    console.log(meal);
-                                    var foodsForCurrentMealDayMeal = _this._storage.GetFoodForAMeal(mealDayMeal.mealId, mealDayMeal.mealDayId);
-                                    if (foodsForCurrentMealDayMeal.length > 0) {
-                                        foodsForCurrentMealDayMeal.forEach(function (food) {
-                                            foodsForAMealDay.push(food);
-                                        });
-                                    }
+                            if (foodsForCurrentMealDayMeal.length > 0) {
+                                foodsForCurrentMealDayMeal.forEach(function (food) {
+                                    foodsForAMealDay.push(food);
                                 });
                             }
                         });
                     }
                     if (foodsForAMealDay.length > 0) {
+                        console.log("Foods for a meal day");
+                        console.log(foodsForAMealDay);
                         foodsForAMealDay.forEach(function (food) {
                             console.log(food);
                             if (food.macros.calories) {
                                 totalMacros.calories += food.macros.calories;
                             }
                             if (food.macros.carbohydrates) {
-                                totalMacros.calories += food.macros.carbohydrates;
+                                totalMacros.carbohydrates += food.macros.carbohydrates;
                             }
                             if (food.macros.fat) {
+                                totalMacros.fat += food.macros.fat;
                             }
-                            totalMacros.fat += food.macros.fat;
-                            totalMacros.protein += food.macros.protein;
+                            if (food.macros.protein) {
+                                totalMacros.protein += food.macros.protein;
+                            }
                         });
                     }
                     console.log("These are the total macros for MealDayId: " + mealDayId);
                     console.log(totalMacros);
+                    return totalMacros;
                 };
                 MealDaysListComponent = __decorate([
                     core_1.Component({

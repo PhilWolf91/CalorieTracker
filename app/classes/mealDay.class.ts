@@ -6,6 +6,7 @@ export class MealDay{
     mealDayName: string;
     mealDayMeals: Array<Meal>;
     macros: Macros;
+    macrosConsumed: Macros;
     dateCreated: Date;
     constructor(){
         this.macros = new Macros();
