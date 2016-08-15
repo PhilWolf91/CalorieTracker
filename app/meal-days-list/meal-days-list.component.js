@@ -36,10 +36,11 @@ System.register(['angular2/core', 'angular2/router', '../classes/macros.class', 
                     this.mealDays = new Array();
                     this.storage = window.localStorage;
                     var mealDays = JSON.parse(this.storage.getItem('mealDays'));
-                    mealDays.forEach(function (mealDay) {
-                        mealDay.macrosConsumed = _this.getTotalMacrosForAMealDay(mealDay.mealDayId);
-                    });
-                    console.log(mealDays);
+                    if (mealDays) {
+                        mealDays.forEach(function (mealDay) {
+                            mealDay.macrosConsumed = _this.getTotalMacrosForAMealDay(mealDay.mealDayId);
+                        });
+                    }
                     if (mealDays != undefined) {
                         mealDays.forEach(function (meal) {
                             _this.mealDays.push(meal);
@@ -63,8 +64,6 @@ System.register(['angular2/core', 'angular2/router', '../classes/macros.class', 
                     totalMacros.fat = 0;
                     totalMacros.protein = 0;
                     var mealDayMeals = this._storage.GetMealsForAMealDayId(mealDayId);
-                    console.log("Meal Day Meals");
-                    console.log(mealDayMeals);
                     var foodsForAMealDay = new Array();
                     if (mealDayMeals) {
                         mealDayMeals.forEach(function (mealDayMeal) {
@@ -77,10 +76,7 @@ System.register(['angular2/core', 'angular2/router', '../classes/macros.class', 
                         });
                     }
                     if (foodsForAMealDay.length > 0) {
-                        console.log("Foods for a meal day");
-                        console.log(foodsForAMealDay);
                         foodsForAMealDay.forEach(function (food) {
-                            console.log(food);
                             if (food.macros.calories) {
                                 totalMacros.calories += food.macros.calories;
                             }
@@ -95,8 +91,6 @@ System.register(['angular2/core', 'angular2/router', '../classes/macros.class', 
                             }
                         });
                     }
-                    console.log("These are the total macros for MealDayId: " + mealDayId);
-                    console.log(totalMacros);
                     return totalMacros;
                 };
                 MealDaysListComponent = __decorate([
