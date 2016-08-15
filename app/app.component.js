@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './home/home.component', './meal-days-list/meal-days-list.component', './meal-day-add/meal-day-add.component', './meal-day-meals/meal-day-meals.component', './meal-add/meal-add.component', './services/localStorage.service'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', './home/home.component', './meal-days-list/meal-days-list.component', './meal-day-add/meal-day-add.component', './meal-day-meals/meal-day-meals.component', './meal-add/meal-add.component', './services/localStorage.service', './information/information.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './home/home.component', '.
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, home_component_1, meal_days_list_component_1, meal_day_add_component_1, meal_day_meals_component_1, meal_add_component_1, localStorage_service_1;
+    var core_1, router_1, home_component_1, meal_days_list_component_1, meal_day_add_component_1, meal_day_meals_component_1, meal_add_component_1, localStorage_service_1, information_component_1;
     var AppComponent;
     return {
         setters:[
@@ -37,6 +37,9 @@ System.register(['angular2/core', 'angular2/router', './home/home.component', '.
             },
             function (localStorage_service_1_1) {
                 localStorage_service_1 = localStorage_service_1_1;
+            },
+            function (information_component_1_1) {
+                information_component_1 = information_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -59,7 +62,8 @@ System.register(['angular2/core', 'angular2/router', './home/home.component', '.
                         { path: './meal-days-list', name: 'MealDaysList', component: meal_days_list_component_1.MealDaysListComponent },
                         { path: './meal-day-add', name: 'MealDayAdd', component: meal_day_add_component_1.MealDayAddComponent },
                         { path: './meal-day-meals:{mealDayId}', name: 'MealDayMeals', component: meal_day_meals_component_1.MealDayMealsComponent },
-                        { path: './meal-add:{mealDayId}', name: 'MealAdd', component: meal_add_component_1.MealAddComponent }
+                        { path: './meal-add:{mealDayId}', name: 'MealAdd', component: meal_add_component_1.MealAddComponent },
+                        { path: './information', name: 'Information', component: information_component_1.InformationComponent }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

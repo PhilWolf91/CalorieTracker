@@ -7,6 +7,7 @@ import { MealDayMealsComponent } from './meal-day-meals/meal-day-meals.component
 import { MealAddComponent } from './meal-add/meal-add.component'
 import { FoodListComponent } from './food-list/food-list.component'
 import { LocalStorageService } from './services/localStorage.service'
+import { InformationComponent } from './information/information.component'
 
 @Component({
     selector: 'ctw-app',
@@ -23,7 +24,8 @@ import { LocalStorageService } from './services/localStorage.service'
     { path: './meal-days-list', name: 'MealDaysList', component: MealDaysListComponent },
     { path: './meal-day-add', name: 'MealDayAdd', component: MealDayAddComponent},
     { path: './meal-day-meals:{mealDayId}', name: 'MealDayMeals', component: MealDayMealsComponent},
-    { path: './meal-add:{mealDayId}', name: 'MealAdd', component: MealAddComponent}
+    { path: './meal-add:{mealDayId}', name: 'MealAdd', component: MealAddComponent},
+    { path: './information', name: 'Information', component: InformationComponent}
 ])
 
 export class AppComponent {
