@@ -6,8 +6,9 @@ import { Router } from 'angular2/router'
 })
 
 export class HomeComponent {
+    background: string;
     constructor(private _router: Router){
-        
+        this.background = "app/assets/images/Background1900x1200.jpg";
     }
     public pageTitle: string = "Welcome";
     

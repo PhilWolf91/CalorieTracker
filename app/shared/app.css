@@ -5,3 +5,10 @@ table{
 .WhiteSpaceBlock{
     padding-top: 200px;
 }
+.home-background{
+    background-image: 'app/assets/images/Background1900x1200.jpg';
+}
+
+.white-text{
+    color:white;
+}

@@ -25,6 +25,7 @@ System.register(['angular2/core', 'angular2/router'], function(exports_1, contex
                 function HomeComponent(_router) {
                     this._router = _router;
                     this.pageTitle = "Welcome";
+                    this.background = "app/assets/images/Background1900x1200.jpg";
                 }
                 HomeComponent.prototype.goToMealDayList = function () {
                     this._router.navigate(['MealDaysList']);
