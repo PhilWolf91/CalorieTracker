@@ -1,27 +1,65 @@
-<h2>Add Meal Day</h2>
-<table class="table">
-    <tr>
-        <td>Meal Day Name: </td>
-        <td><input [(ngModel)]='mealName' type="text" class="form-input" value="ex: Day One" /></td>
-    </tr>
-    <tr>
-        <td>Calories for the day</td>
-        <td><input [(ngModel)]='calories' type="number" class="form-input" value="ex: 2500" /></td>
-    </tr>
-    <tr>
-        <td>Protein for the day</td>
-        <td><input [(ngModel)]='protein' type="number" class="form-input" /></td>
-    </tr>
-    <tr>
-        <td>Carbs for the day</td>
-        <td><input [(ngModel)]='carbohydrates' type="number" class="form-input" value="ex: 253" /></td>
-    </tr>
-    <tr>
-        <td>Fat for the day</td>
-        <td><input [(ngModel)]='fats' type="number" class="form-input" value="ex: 57" /></td>
-    </tr>   
-    <tr>
-        <td></td>
-        <td><button class="btn btn-primary btn-block" (click)='AddNewMealDay()'>Save New Meal Day</button>
-    </tr>
-</table>
+<form>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <span>Add Meal Day</span>
+        </div>
+        <div class="panel-body" style="margin: 10px">
+            <div class="row form-group">
+                <div class="col-sm-4">
+                    <div class="row">
+                        <label>Give the day a name</label>
+                        <span style="font-size: small"><i>(ex: 1/1/2017 or Day One!)</i></span>
+                    </div>
+                        
+                    
+                </div>
+                <div class="col-sm-4">
+                    <input [(ngModel)]='mealName' type="text" class="form-input" value="ex: Day One" />
+                </div>
+            </div>
+            <div class="row form-group">
+                    <div class="col-sm-4">
+                    <div class="row">
+                        <label>Calories for the day</label>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <input [(ngModel)]='calories' type="number" class="form-input" value="ex: 2500" />
+                </div>
+            </div>
+            <div class="row form-group">
+                    <div class="col-sm-4">
+                    <div class="row">
+                        <label>Protein for the day</label>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <input [(ngModel)]='protein' type="number" class="form-input" value="ex: 2500" />
+                </div>
+            </div>
+            <div class="row form-group">
+                    <div class="col-sm-4">
+                    <div class="row">
+                        <label>Carbs for the day</label>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <input [(ngModel)]='carbohydrates' type="number" class="form-input" value="ex: 2500" />
+                </div>
+            </div>
+            <div class="row form-group">
+                    <div class="col-sm-4">
+                    <div class="row">
+                        <label>Fats for the day</label>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <input [(ngModel)]='fats' type="number" class="form-input" value="ex: 2500" />
+                </div>
+            </div>
+            <div class="row form-group">
+                <button type="submit" class="btn btn-primary" (click)='AddNewMealDay()'>Save New Meal Day</button>
+            </div>
+        </div>
+    </div>
+</form>
