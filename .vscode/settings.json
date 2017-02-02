@@ -4,5 +4,6 @@
         "**/.git": true,
         "**/.DS_Store": true
     }, 
-    "files.autoSave": "off"
+    "files.autoSave": "off",
+    "typescript.check.workspaceVersion": false
 }

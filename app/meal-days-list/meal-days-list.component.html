@@ -1,6 +1,11 @@
-<div class="panel panel-primary">
-    <div class="panel-heading">
-        <strong>Days</strong>
+<div class="partialBody">
+    <div class="row">
+        <div class="col-xs-6">
+            <strong style="font-size: xx-large; vertical-align: center">Days</strong>
+        </div>
+        <div style="padding-top:10px" class="col-xs-6" (click)='goToAddMealDay()'>
+            <strong style="font-size: large; vertical-align: center; padding-top:17px">Add Day</strong>
+        </div>
      </div>
      <div class="panel-body">
          <div *ngFor="#mealDay of mealDays">
@@ -68,9 +73,6 @@
                 </div>
             </tbody>
          </table>-->
-     </div>
-     <div style="padding: 10px">
-        <button class="btn btn-lg btn-block" (click)='goToAddMealDay()'>Click here to add a new day</button>
      </div>
     
 </div>

@@ -5,10 +5,17 @@ table{
 .WhiteSpaceBlock{
     padding-top: 200px;
 }
-.home-background{
-    background-image: 'app/assets/images/Background1900x1200.jpg';
+
+
+body{
+    color:dodgerblue;
+    background: rgba(30,30,30, 1)
 }
 
-.white-text{
-    color:white;
+div.partialBody{
+    background: rgba(30,30,30, 1);
+}
+
+input, textarea {
+    background:  rgba(0, 0, 0, 0.6)
 }
